@@ -126,39 +126,59 @@ public class MuseumGen : MonoBehaviour {
 			sideWall = sideWallLibrary[sideSelect];
 			
 			// LEVEL CREATION BEGINS HERE //
-			
-			Instantiate (floorTiles, new Vector3 (tileX, 0f, tileZ), Quaternion.identity);
-			tileX++;
-			lengthQuant++;
-			
-			if (lengthQuant + 1 == roomLength){
-				// Creates a Width Wall each time a row ends
-				Instantiate (backWall, new Vector3(tileX, 0f, tileZ), Quaternion.identity);
-				
-				tileZ ++;
-				widthQuant++;
-				tileX = baseX;
-				lengthQuant = 0;
+			if (tileX == baseX){
 
-				if (backWallSelect == 0){
-					doorway = true;
-				}
+				//make sure first row has no obsticles to garantee not blockingn door
+				Instantiate (floorTileLibrary[0], new Vector3 (tileX, 0f, tileZ), Quaternion.identity);
+				tileX++;
+				lengthQuant++;
+			}
+
+			else {
+
+				Instantiate (floorTiles, new Vector3 (tileX, 0f, tileZ), Quaternion.identity);
+				tileX++;
+				lengthQuant++;
 				
-				if (widthQuant == roomWidth){
+				if (lengthQuant + 1 == roomLength){
+					// Creates a Width Wall each time a row ends
+					Instantiate (backWall, new Vector3(tileX, 0f, tileZ), Quaternion.identity);
 					
-					while (farWall != roomLength -1){
-						// When the room is finished spawning everything else, fills in the walls of the far wall
-						Instantiate (sideWall, new Vector3((tileX + farWall), 0f, tileZ), Quaternion.identity);
-						farWall ++;
+					tileZ ++;
+					widthQuant++;
+					tileX = baseX;
+					lengthQuant = 0;
 
-						if (farWall +1 == roomLength){
-							Instantiate (cornerPiece, new Vector3((tileX + farWall), 0f, tileZ), Quaternion.identity);
-						}
+					if (backWallSelect == 0){
+						doorway = true;
 					}
 					
-					newRoom = false; // Turns off room generation
-					roomCounter ++;
-					Debug.Log ("Generated a Room with a length of " + roomLength + " and a width of " + roomWidth + " (" + roomTotal + " Total Spaces)");
+					if (widthQuant == roomWidth){
+						
+						while (farWall != roomLength -1){
+
+							//make sure that the first side wall has no obsticle in case of corner door
+							if (tileX == baseX){
+								Instantiate (sideWallLibrary[0], new Vector3((tileX + farWall), 0f, tileZ), Quaternion.identity);
+								farWall ++;
+							}
+
+							else {
+								// When the room is finished spawning everything else, fills in the walls of the far wall
+								Instantiate (sideWall, new Vector3((tileX + farWall), 0f, tileZ), Quaternion.identity);
+								farWall ++;
+							}
+
+							if (farWall +1 == roomLength){
+								Instantiate (cornerPiece, new Vector3((tileX + farWall), 0f, tileZ), Quaternion.identity);
+							}
+							
+						}
+						
+						newRoom = false; // Turns off room generation
+						roomCounter ++;
+						Debug.Log ("Generated a Room with a length of " + roomLength + " and a width of " + roomWidth + " (" + roomTotal + " Total Spaces)");
+					}
 				}
 			}
 		}
