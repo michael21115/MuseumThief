@@ -6,8 +6,12 @@ public class MuseumGen : MonoBehaviour {
 	int roomCounter = 0; // Determines which room the builder is working on
 	int roomQuantity; // Determines how many rooms there are
 
-	public int roomLength = 8; // Determines the length of each individual room
-	public int roomWidth =  8; // Determines the width of each individual room
+	int roomLength;
+	public int roomLengthMin = 5; // Determines the length of each individual room
+	public int roomLengthMax = 8;
+	int roomWidth ; // Determines the width of each individual room
+	public int roomWidthMin = 5;
+	public int roomWidthMax = 8;
 	public int roomTotal =  8; // Determines the total amount of spaces in each individual room
 	public int maxRooms = 4;
 	public int minRooms = 10;
@@ -74,10 +78,6 @@ public class MuseumGen : MonoBehaviour {
 //			}
 //		}
 
-
-		
-
-		
 		while (roomCounter < roomQuantity) {
 			
 			if (newRoom == false){
@@ -88,9 +88,14 @@ public class MuseumGen : MonoBehaviour {
 				farWall = 0;
 				tileZ = 0;
 				totalLength += roomLength;
+				roomLength = Random.Range (roomLengthMin, roomLengthMax);
+				roomWidth = Random.Range (roomWidthMin, roomWidthMax);
 				roomTotal = roomLength * roomWidth;
 				tileX = totalLength;
 				baseX = tileX;
+				if (roomCounter > 1){
+					tileZ = Random.Range (-3, 3);
+				}
 			}
 			
 			// Determine the features on the WidthWall - either a door (1/4th) or a blank wall (3/4ths)

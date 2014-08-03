@@ -1,6 +1,6 @@
 //Maya ASCII 2014 scene
-//Name: CornerDoorway.ma
-//Last modified: Sat, Aug 02, 2014 02:06:05 AM
+//Name: WindowMiddle.ma
+//Last modified: Sat, Aug 02, 2014 04:21:06 PM
 //Codeset: UTF-8
 requires maya "2014";
 requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOutputPass" -nodeType "mentalrayRenderPass"
@@ -90,15 +90,18 @@ fileInfo "osv" "Mac OS X 10.9.4";
 fileInfo "license" "student";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 2.5245165317156668 4.1569247727324807 -2.4895114442170128 ;
-	setAttr ".r" -type "double3" -49.538352729541963 134.5999999999359 0 ;
+	setAttr ".t" -type "double3" 0.5691219515037651 1.7672465542172733 -3.2998475009490917 ;
+	setAttr ".r" -type "double3" -21.000000000025462 178.79999999997855 0 ;
+	setAttr ".rp" -type "double3" 0 0 -1.1102230246251565e-16 ;
+	setAttr ".rpt" -type "double3" -1.0827201781699027e-16 -9.0841022355152443e-18 1.1600175780401399e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
-	setAttr ".fl" 34.999999999999986;
-	setAttr ".coi" 5.4635953836242406;
+	setAttr ".fl" 34.999999999999979;
+	setAttr ".coi" 3.5353904999674017;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
+	setAttr ".tp" -type "double3" 0.49999999999999994 0.50027590990066528 -5.9291376760379148e-17 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	setAttr ".v" no;
@@ -213,124 +216,114 @@ createNode mesh -n "polySurfaceShape4" -p "transform1";
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "CornerDoorway";
-createNode mesh -n "CornerDoorwayShape" -p "CornerDoorway";
+createNode transform -n "polySurface8";
+createNode transform -n "Wall" -p "polySurface8";
+createNode mesh -n "WallShape" -p "Wall";
 	setAttr -k off ".v";
-	setAttr ".iog[0].og[0].gcl" -type "componentList" 1 "f[0:35]";
+	setAttr -s 2 ".iog[0].og";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
 	setAttr ".uvst[0].uvsn" -type "string" "map1";
-	setAttr -s 84 ".uvst[0].uvsp[0:83]" -type "float2" 0.375 0 0.625 0 0.375
-		 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0
-		 0.875 0.25 0.125 0 0.125 0.25 0.375 0 0.625 0 0.625 0.25 0.375 0.25 0.625 0.5 0.375
-		 0.5 0.625 0.75 0.375 0.75 0.625 1 0.375 1 0.875 0 0.875 0.25 0.125 0 0.125 0.25 0.375
-		 0 0.625 0 0.625 0.25 0.375 0.25 0.625 0.5 0.375 0.5 0.625 0.75 0.375 0.75 0.625 1
-		 0.375 1 0.875 0 0.875 0.25 0.125 0 0.125 0.25 0.375 0 0.625 0 0.625 0.25 0.375 0.25
-		 0.625 0.5 0.375 0.5 0.625 0.75 0.375 0.75 0.625 1 0.375 1 0.875 0 0.875 0.25 0.125
-		 0 0.125 0.25 0.375 0 0.625 0 0.625 0.25 0.375 0.25 0.625 0.5 0.375 0.5 0.625 0.75
-		 0.375 0.75 0.625 1 0.375 1 0.875 0 0.875 0.25 0.125 0 0.125 0.25 0.375 0 0.625 0
-		 0.625 0.25 0.375 0.25 0.625 0.5 0.375 0.5 0.625 0.75 0.375 0.75 0.625 1 0.375 1 0.875
-		 0 0.875 0.25 0.125 0 0.125 0.25;
 	setAttr ".cuvs" -type "string" "map1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 48 ".vt[0:47]"  -0.49000001 -0.050000001 0.49000001 0.49000001 -0.050000001 0.49000001
-		 -0.49000001 0.050000001 0.49000001 0.49000001 0.050000001 0.49000001 -0.49000001 0.050000001 -0.49000001
-		 0.49000001 0.050000001 -0.49000001 -0.49000001 -0.050000001 -0.49000001 0.49000001 -0.050000001 -0.49000001
-		 -0.5 0 0.44999999 0.5 0 0.44999999 -0.5 0 0.55000001 0.5 0 0.55000001 -0.5 1 0.55000001
-		 0.5 1 0.55000001 -0.5 1 0.44999999 0.5 1 0.44999999 -0.44999999 0.0102759 0.49000001
-		 -0.44999999 0.99027592 0.49000001 -0.55000001 0.0102759 0.49000001 -0.55000001 0.99027592 0.49000001
-		 -0.55000001 0.0102759 -0.49000001 -0.55000001 0.99027592 -0.49000001 -0.44999999 0.0102759 -0.49000001
-		 -0.44999999 0.99027592 -0.49000001 -0.49000001 -0.050000001 0.49000001 0.49000001 -0.050000001 0.49000001
-		 -0.49000001 0.050000001 0.49000001 0.49000001 0.050000001 0.49000001 -0.49000001 0.050000001 -0.49000001
-		 0.49000001 0.050000001 -0.49000001 -0.49000001 -0.050000001 -0.49000001 0.49000001 -0.050000001 -0.49000001
-		 -0.44999999 0.0102759 0.49000001 -0.44999999 0.99027592 0.49000001 -0.55000001 0.0102759 0.49000001
-		 -0.55000001 0.99027592 0.49000001 -0.55000001 0.0102759 -0.49000001 -0.55000001 0.99027592 -0.49000001
-		 -0.44999999 0.0102759 -0.49000001 -0.44999999 0.99027592 -0.49000001 -0.38115308 -0.10140991 0.24896309
-		 -0.38115308 0.89859009 0.24896309 -0.4811531 -0.10140991 0.24896309 -0.4811531 0.89859009 0.24896309
-		 -0.4811531 -0.10140991 -0.25103691 -0.4811531 0.89859009 -0.25103691 -0.38115308 -0.10140991 -0.25103691
-		 -0.38115308 0.89859009 -0.25103691;
-	setAttr -s 72 ".ed[0:71]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
-		 3 5 0 4 6 0 5 7 0 6 0 0 7 1 0 8 9 0 10 11 0 12 13 0 14 15 0 8 10 0 9 11 0 10 12 0
-		 11 13 0 12 14 0 13 15 0 14 8 0 15 9 0 16 17 0 18 19 0 20 21 0 22 23 0 16 18 0 17 19 0
-		 18 20 0 19 21 0 20 22 0 21 23 0 22 16 0 23 17 0 24 25 0 26 27 0 28 29 0 30 31 0 24 26 0
-		 25 27 0 26 28 0 27 29 0 28 30 0 29 31 0 30 24 0 31 25 0 32 33 0 34 35 0 36 37 0 38 39 0
-		 32 34 0 33 35 0 34 36 0 35 37 0 36 38 0 37 39 0 38 32 0 39 33 0 40 41 0 42 43 0 44 45 0
-		 46 47 0 40 42 0 41 43 0 42 44 0 43 45 0 44 46 0 45 47 0 46 40 0 47 41 0;
-	setAttr -s 36 -ch 144 ".fc[0:35]" -type "polyFaces" 
-		f 4 0 5 -2 -5
-		mu 0 4 0 1 3 2
-		f 4 1 7 -3 -7
-		mu 0 4 2 3 5 4
-		f 4 2 9 -4 -9
-		mu 0 4 4 5 7 6
-		f 4 3 11 -1 -11
-		mu 0 4 6 7 9 8
-		f 4 -12 -10 -8 -6
-		mu 0 4 1 10 11 3
-		f 4 10 4 6 8
-		mu 0 4 12 0 2 13
-		f 4 12 17 -14 -17
-		mu 0 4 14 15 16 17
-		f 4 13 19 -15 -19
-		mu 0 4 17 16 18 19
-		f 4 14 21 -16 -21
-		mu 0 4 19 18 20 21
-		f 4 15 23 -13 -23
-		mu 0 4 21 20 22 23
-		f 4 -24 -22 -20 -18
-		mu 0 4 15 24 25 16
-		f 4 22 16 18 20
-		mu 0 4 26 14 17 27
-		f 4 24 29 -26 -29
-		mu 0 4 28 29 30 31
-		f 4 25 31 -27 -31
-		mu 0 4 31 30 32 33
-		f 4 26 33 -28 -33
-		mu 0 4 33 32 34 35
-		f 4 27 35 -25 -35
-		mu 0 4 35 34 36 37
-		f 4 -36 -34 -32 -30
-		mu 0 4 29 38 39 30
-		f 4 34 28 30 32
-		mu 0 4 40 28 31 41
-		f 4 36 41 -38 -41
-		mu 0 4 42 43 44 45
-		f 4 37 43 -39 -43
-		mu 0 4 45 44 46 47
-		f 4 38 45 -40 -45
-		mu 0 4 47 46 48 49
-		f 4 39 47 -37 -47
-		mu 0 4 49 48 50 51
-		f 4 -48 -46 -44 -42
-		mu 0 4 43 52 53 44
-		f 4 46 40 42 44
-		mu 0 4 54 42 45 55
-		f 4 48 53 -50 -53
-		mu 0 4 56 57 58 59
-		f 4 49 55 -51 -55
-		mu 0 4 59 58 60 61
-		f 4 50 57 -52 -57
-		mu 0 4 61 60 62 63
-		f 4 51 59 -49 -59
-		mu 0 4 63 62 64 65
-		f 4 -60 -58 -56 -54
-		mu 0 4 57 66 67 58
-		f 4 58 52 54 56
-		mu 0 4 68 56 59 69
-		f 4 60 65 -62 -65
-		mu 0 4 70 71 72 73
-		f 4 61 67 -63 -67
-		mu 0 4 73 72 74 75
-		f 4 62 69 -64 -69
-		mu 0 4 75 74 76 77
-		f 4 63 71 -61 -71
-		mu 0 4 77 76 78 79
-		f 4 -72 -70 -68 -66
-		mu 0 4 71 80 81 72
-		f 4 70 64 66 68
-		mu 0 4 82 70 73 83;
+createNode mesh -n "polySurfaceShape5" -p "Wall";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr -s 52 ".uvst[0].uvsp[0:51]" -type "float2" 0.375 0 0.625 0 0.625
+		 0.25 0.375 0.25 0.625 0.5 0.375 0.5 0.625 0.75 0.375 0.75 0.625 1 0.375 1 0.875 0
+		 0.875 0.25 0.125 0 0.125 0.25 0.625 0.96387714 0.6611228 0 0.33887717 0 0.375 0.96387714
+		 0.33887717 0.25 0.375 0.28612286 0.625 0.28612286 0.6611228 0.25 0.625 0.77520156
+		 0.84979838 0 0.15020157 0 0.375 0.77520156 0.15020159 0.25 0.375 0.47479841 0.625
+		 0.47479841 0.84979844 0.25 0.59666866 0 0.59666866 1 0.59666866 0.25 0.59666866 0.28612286
+		 0.59666866 0.47479841 0.59666866 0.5 0.59666866 0.75 0.59666866 0.77520156 0.59666866
+		 0.96387714 0.40208173 0 0.40208173 1 0.40208173 0.25 0.40208173 0.28612283 0.40208173
+		 0.47479841 0.40208173 0.5 0.40208173 0.75 0.40208173 0.77520156 0.40208173 0.96387714
+		 0.59666866 0.96387714 0.40208173 0.96387714 0.40208173 0.28612283 0.59666866 0.28612286;
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr -s 36 ".vt[0:35]"  0.55000001 0.0102759 0.49000001 0.55000001 0.99027592 0.49000001
+		 0.44999999 0.0102759 0.49000001 0.44999999 0.99027592 0.49000001 0.44999999 0.0102759 -0.49000001
+		 0.44999999 0.99027592 -0.49000001 0.55000001 0.0102759 -0.49000001 0.55000001 0.99027592 -0.49000001
+		 0.55000001 0.99027592 0.34839845 0.55000001 0.0102759 0.34839845 0.44999999 0.0102759 0.34839845
+		 0.44999999 0.99027592 0.34839845 0.55000001 0.99027586 -0.39120981 0.55000001 0.0102759 -0.39120981
+		 0.44999999 0.0102759 -0.39120978 0.44999999 0.99027586 -0.39120978 0.55000001 0.87921697 0.49000001
+		 0.44999999 0.87921697 0.49000001 0.44999999 0.87921697 0.34839845 0.44999999 0.87921691 -0.39120978
+		 0.44999999 0.87921697 -0.49000001 0.55000001 0.87921697 -0.49000001 0.55000001 0.87921691 -0.39120981
+		 0.55000001 0.87921697 0.34839845 0.55000001 0.11643624 0.48999998 0.44999999 0.11643624 0.48999998
+		 0.44999999 0.11643624 0.34839845 0.44999999 0.11643624 -0.39120975 0.44999999 0.11643624 -0.48999998
+		 0.55000001 0.11643624 -0.48999998 0.55000001 0.11643626 -0.39120981 0.55000001 0.11643627 0.34839845
+		 0.55000001 0.87921697 0.34839845 0.55000001 0.11643627 0.34839845 0.44999999 0.11643624 0.34839845
+		 0.44999999 0.87921697 0.34839845;
+	setAttr -s 62 ".ed[0:61]"  0 24 0 2 25 0 4 28 0 6 29 0 0 2 0 1 3 0 2 10 0
+		 3 11 0 4 6 0 5 7 0 6 13 0 7 12 0 8 1 0 9 0 0 8 23 1 10 14 0 9 10 1 11 15 0 10 26 1
+		 11 8 1 12 8 0 13 9 0 12 22 1 14 4 0 13 14 1 15 5 0 14 27 1 15 12 1 16 1 0 17 3 0
+		 16 17 0 18 11 1 17 18 0 19 15 1 18 19 0 20 5 0 19 20 0 21 7 0 20 21 0 21 22 0 22 23 0
+		 23 16 0 24 25 0 25 26 0 26 27 0 27 28 0 28 29 0 30 13 1 29 30 0 31 9 1 30 31 0 31 24 0
+		 26 31 0 27 30 0 22 19 0 23 18 0 23 32 0 31 33 0 26 34 0 34 33 0 18 35 0 32 35 0;
+	setAttr -s 28 -ch 112 ".fc[0:27]" -type "polyFaces" 
+		f 4 0 42 -2 -5
+		mu 0 4 0 39 41 3
+		f 4 26 45 -3 -24
+		mu 0 4 27 43 44 5
+		f 4 2 46 -4 -9
+		mu 0 4 5 44 45 7
+		f 4 3 48 47 -11
+		mu 0 4 7 45 46 25
+		f 4 27 -12 -10 -26
+		mu 0 4 29 23 10 11
+		f 4 10 24 23 8
+		mu 0 4 12 24 26 13
+		f 4 -50 51 -1 -14
+		mu 0 4 17 47 40 9
+		f 4 -17 13 4 6
+		mu 0 4 18 16 0 3
+		f 4 1 43 -19 -7
+		mu 0 4 3 41 42 19
+		f 4 -13 -20 -8 -6
+		mu 0 4 1 15 21 2
+		f 4 -48 50 49 -22
+		mu 0 4 25 46 47 17
+		f 4 -25 21 16 15
+		mu 0 4 26 24 16 18
+		f 4 18 44 -27 -16
+		mu 0 4 19 42 43 27
+		f 4 19 -21 -28 -18
+		mu 0 4 21 15 23 29
+		f 4 28 5 -30 -31
+		mu 0 4 30 1 2 32
+		f 4 -33 29 7 -32
+		mu 0 4 33 32 2 20
+		f 4 -35 31 17 -34
+		mu 0 4 34 33 20 28
+		f 4 -37 33 25 -36
+		mu 0 4 35 34 28 4
+		f 4 -39 35 9 -38
+		mu 0 4 36 35 4 6
+		f 4 -40 37 11 22
+		mu 0 4 37 36 6 22
+		f 4 -41 -23 20 14
+		mu 0 4 38 37 22 14
+		f 4 -42 -15 12 -29
+		mu 0 4 31 38 14 8
+		f 4 -45 52 -51 -54
+		mu 0 4 43 42 47 46
+		f 4 34 -55 40 55
+		mu 0 4 33 34 37 38
+		f 4 -53 58 59 -58
+		mu 0 4 47 42 50 49
+		f 4 -56 56 61 -61
+		mu 0 4 33 38 48 51
+		f 4 -46 53 -49 -47
+		mu 0 4 44 43 46 45
+		f 4 36 38 39 54
+		mu 0 4 34 35 36 37;
 	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
@@ -553,8 +546,29 @@ createNode script -n "sceneConfigurationScriptNode";
 	setAttr ".st" 6;
 createNode groupId -n "groupId1";
 	setAttr ".ihi" 0;
+createNode polyBridgeEdge -n "polyBridgeEdge1";
+	setAttr ".ics" -type "componentList" 2 "e[32]" "e[41]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".dv" 0;
+	setAttr ".sv1" 17;
+	setAttr ".sv2" 23;
+createNode groupParts -n "groupParts1";
+	setAttr ".ihi" 0;
+	setAttr ".ic" -type "componentList" 1 "f[0:33]";
+	setAttr ".gi" 38;
+createNode polyBridgeEdge -n "polyBridgeEdge2";
+	setAttr ".ics" -type "componentList" 2 "e[43]" "e[51]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".dv" 0;
+	setAttr ".sv1" 26;
+	setAttr ".sv2" 24;
 createNode groupId -n "groupId2";
 	setAttr ".ihi" 0;
+createNode groupParts -n "groupParts2";
+	setAttr ".ihi" 0;
+	setAttr ".ic" -type "componentList" 1 "f[0:34]";
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -588,8 +602,9 @@ select -ne :ikSystem;
 	setAttr -s 4 ".sol";
 connectAttr "groupId1.id" "polySurfaceShape4.iog.og[0].gid";
 connectAttr ":initialShadingGroup.mwc" "polySurfaceShape4.iog.og[0].gco";
-connectAttr "groupId2.id" "CornerDoorwayShape.iog.og[0].gid";
-connectAttr ":initialShadingGroup.mwc" "CornerDoorwayShape.iog.og[0].gco";
+connectAttr "groupId2.id" "WallShape.iog.og[0].gid";
+connectAttr ":initialShadingGroup.mwc" "WallShape.iog.og[0].gco";
+connectAttr "groupParts2.og" "WallShape.i";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
@@ -601,9 +616,16 @@ connectAttr ":miDefaultOptions.msg" ":mentalrayItemsList.opt" -na;
 connectAttr ":miDefaultFramebuffer.msg" ":mentalrayItemsList.fb" -na;
 connectAttr ":miDefaultOptions.msg" ":mentalrayGlobals.opt";
 connectAttr ":miDefaultFramebuffer.msg" ":mentalrayGlobals.fb";
+connectAttr "polySurfaceShape5.o" "polyBridgeEdge1.ip";
+connectAttr "WallShape.wm" "polyBridgeEdge1.mp";
+connectAttr "polyBridgeEdge1.out" "groupParts1.ig";
+connectAttr "groupParts1.og" "polyBridgeEdge2.ip";
+connectAttr "WallShape.wm" "polyBridgeEdge2.mp";
+connectAttr "polyBridgeEdge2.out" "groupParts2.ig";
+connectAttr "groupId2.id" "groupParts2.gi";
 connectAttr "polySurfaceShape4.iog.og[0]" ":initialShadingGroup.dsm" -na;
-connectAttr "CornerDoorwayShape.iog.og[0]" ":initialShadingGroup.dsm" -na;
+connectAttr "WallShape.iog.og[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "groupId1.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId2.msg" ":initialShadingGroup.gn" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
-// End of CornerDoorway.ma
+// End of WindowMiddle.ma
