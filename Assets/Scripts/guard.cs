@@ -4,50 +4,47 @@ using System.Collections;
 public class guard : MonoBehaviour {
 
 	//bring in variables
-	public int direction = 0;
+	public int direction = 1;
+	public int move = 1;
 	
 	void Update () {
-		// move forward
-			
-		// strafe left
+
+
 
 			//if not facing left just change players direction
-			if (direction != 2)
+			if (direction == 1)
 			{
 				transform.rotation = Quaternion.Euler(0, 270, 0);
 				
-				//set the direction to left
-				direction = 2;
+				//set the direction to nothing, so this isn't called every frame
+				direction = 0;
 			}
-			//otherwise move left
-			else
-			{
-				transform.position += new Vector3 (0, 0, 1);
-			}
-			
-			
 
-		// strafe right
-		if (Input.GetKeyDown (KeyCode.RightArrow)) {
-			
-			//if not facing right just change players direction
-			if (direction != 3)
+			if (direction == 2)
 			{
 				transform.rotation = Quaternion.Euler(0, 90, 0);
-				
-				//set the direction to right
-				direction = 3;
-			}
-			//otherwise move left
-			else
-			{
-				transform.position += new Vector3 (0, 0, -1);
-			}
 			
+				//set the direction to nothing, so this isn't called every frame
+				direction = 0;
+			}
+
+
+			//move the guard
+			//transform.position += new Vector3 (0, 0, move);
+
+
 			
-		}
+
 		
 		
 		
 	}
+
+
+
+
+
 }
+
+
+
