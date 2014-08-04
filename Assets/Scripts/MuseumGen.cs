@@ -19,12 +19,9 @@ public class MuseumGen : MonoBehaviour {
 	int lengthQuant; // Separate variable from being roomLength dependant, so new rooms don't spawn on top of one another
 	int widthQuant; // same as lengthQuant, prevents new rooms from spawning on top of each other
 
-//	int sideWallQuant; // Separate variable from being roomLength dependant, so new rooms don't spawn on top of one another
-//	int floorQuant; // same as lengthQuant, prevents new rooms from spawning on top of each other 
-
-	public Transform[] floorTileLibrary; // collected floor tiles for random selection
-	public Transform[] backWallLibrary; // Declares the tiles on the far wall (needs an ARRAY with the DOOR and, if on the final level, the EXIT)
-	public Transform[] sideWallLibrary; // Declares the titles on teh side wall 
+	public Transform[] floorTileLibrary;
+	public Transform[] backWallLibrary;
+	public Transform[] sideWallLibrary;
 	public Transform[] cornerLibrary;
 	
 	float tileX = 0f; // X Location of the first tile placed. Increases each time a tile is placed

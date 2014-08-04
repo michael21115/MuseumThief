@@ -2,8 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FloorGeneration.cs">
     <Files>
-      <File FileName="Assets/Scripts/MuseumGen.cs" Line="175" Column="9" />
-      <File FileName="Assets/Scripts/FloorGeneration.cs" Line="66" Column="22" />
+      <File FileName="Assets/Scripts/FloorGeneration.cs" Line="23" Column="51" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
