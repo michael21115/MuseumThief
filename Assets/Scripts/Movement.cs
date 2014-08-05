@@ -3,31 +3,90 @@ using System.Collections;
 
 public class Movement : MonoBehaviour {
 	
+	//bring in variables
+	public int direction = 0;
+	
 	void Update () {
 		// move forward
 		if ( Input.GetKeyDown (KeyCode.UpArrow) ) {
-			transform.position += new Vector3 (1, 0, 0);
+			
+			//if not facing forward just change players direction
+			if (direction != 0)
+			{
+				transform.rotation = Quaternion.Euler(0, 0, 0);
+				
+				//set the direction to forward
+				direction = 0;
+			}
+			//otherwise move forward
+			else
+			{
+				transform.position += new Vector3 (1, 0, 0);
+				Camera.main.transform.position += new Vector3 (1, 0, 0);
+			}
+			
 		}
 		// move backward
 		if ( Input.GetKeyDown (KeyCode.DownArrow) ) {
-			transform.position += new Vector3 (-1, 0, 0);
+			
+			//if not facing back just change players direction
+			if (direction != 1)
+			{
+				transform.rotation = Quaternion.Euler(0, 180, 0);
+				
+				//set the direction to back
+				direction = 1;
+			}
+			//otherwise move back
+			else
+			{
+				transform.position += new Vector3 (-1, 0, 0);
+				Camera.main.transform.position += new Vector3 (-1, 0, 0);
+			}
+			
 		}
 		// strafe left
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
-			transform.position += new Vector3 (0, 0, 1);
+			
+			//if not facing left just change players direction
+			if (direction != 2)
+			{
+				transform.rotation = Quaternion.Euler(0, 270, 0);
+				
+				//set the direction to left
+				direction = 2;
+			}
+			//otherwise move left
+			else
+			{
+				transform.position += new Vector3 (0, 0, 1);
+				Camera.main.transform.position += new Vector3 (0, 0, 1);
+			}
+			
+			
 		}
 		// strafe right
 		if (Input.GetKeyDown (KeyCode.RightArrow)) {
-			transform.position += new Vector3 (0, 0, -1);
+			
+			//if not facing right just change players direction
+			if (direction != 3)
+			{
+				transform.rotation = Quaternion.Euler(0, 90, 0);
+				
+				//set the direction to right
+				direction = 3;
+			}
+			//otherwise move left
+			else
+			{
+				transform.position += new Vector3 (0, 0, -1);
+				Camera.main.transform.position += new Vector3 (0, 0, -1);
+			}
+			
+			
 		}
-		// rotate left
-		if (Input.GetKeyDown (KeyCode.A)){
-			transform.Rotate (0, -90, 0);
-		}
-		// rotate right
-		if (Input.GetKeyDown (KeyCode.D)){
-			transform.Rotate (0, 90, 0);
-		}
-
+		
+		
+		
 	}
 }

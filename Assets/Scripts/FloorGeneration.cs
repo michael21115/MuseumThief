@@ -37,6 +37,7 @@ public class FloorGeneration : MonoBehaviour {
 	bool keyPlaced = false;
 	float doorLocation;
 
+
 	
 	void Start () {
 		roomQuantity = 1;
@@ -78,12 +79,33 @@ public class FloorGeneration : MonoBehaviour {
 				}
 				// Otherwise, spawn either a empty space (3/4ths) or an obstacle (1/4th). 
 				else {
-					tileSelect = Random.Range (0, 4);
+					// if tiles are spawning in the first half of the room, increase the likelihood of obstacles
+					if (tileX < roomLength / 2){
+						tileSelect = Random.Range (1, 4);
+					}
+					// if tiles are spawning in the back half of the room, decrease the likelihood of obstacles
+					else {
+						tileSelect = Random.Range (0, 4);
+					}
 				}
 			}
-			// If there is already a keycard and there are still obstacles that can be placed, increase likelyhood to spawn obstacles to 1/3rd. 
-			else if (levelObstacles >= 0 && keyPlaced == true && tileX > 0){
-				tileSelect = Random.Range (1, 4);
+			// If there is already a keycard and there are still obstacles that can be placed, prioritize obstacle spawning. 
+			else if (levelObstacles > 0 && keyPlaced == true && tileX > 0){
+				// if the doorway hasnt been placed yet, increase the likelihood of spawning obstacles.
+				if (doorway == false){
+					// if spawning tiles in the first half of the room, make obstacles extremely likely to spawn
+					if (tileX < roomLength / 2){
+						tileSelect = Random.Range (2, 4);
+					}
+					// if spawning tiles in the back half of the room, make obstacles unlikely to spawn
+					else {
+						tileSelect = Random.Range (0, 4);
+					}
+				}
+				// if the doorway has been placed, decrease the likelihood of spawning obstacles.
+				else {
+					tileSelect = Random.Range (0, 4);
+				}
 			}
 			// if there is already a keycard and there are no more obstacles that can be placed, spawn only blank tiles.
 			else {
@@ -104,11 +126,32 @@ public class FloorGeneration : MonoBehaviour {
 
 			floorTiles = floorTileLibrary[tileSelect];
 			
-			// Determine the features on the WidthWall, either a door (1/4th) or a blank wall (3/4ths)
+			// Determine the features on the WidthWall.
 			Transform backWall;
-			int backWallSelect = Random.Range (0, 4);
+			int backWallSelect;
 
+			if (levelObstacles > 0){
+				if (doorway == false){
+					// if this is the second-to-last space on the far wall and a door hasn't spawned yet, makes sure this space is either a door or empty.
+					if (widthQuant + 1 == roomWidth){
+						backWallSelect = Random.Range (0, 2);
+					}
+					// if anywhere else along the back wall, spawn a door (1/5th), an obstacle (1/5th) or a blank wall (3/5ths). 
+					else {
+						backWallSelect = Random.Range (0, 5);
+					}
+				}
+				// if a door exists already, spawn an obstacle (1/4th) or a blank wall (3/4ths).
+				else {
+					backWallSelect = Random.Range (1, 5);
+				}
+			}
+			else {
+				backWallSelect = 1;
+			}
+			
 			backWall = backWallLibrary[backWallSelect];
+
 
 			// Determine the features of the corner piece, either an obstacle or a blank floor
 			Transform cornerWall;
@@ -135,22 +178,24 @@ public class FloorGeneration : MonoBehaviour {
 				lengthQuant++;
 			}
 			
-			// if the Length Quantity is one less than the total length of the room, this fills the edge of the room with a widthWall.
-			// The + 1 is necessary to account for the wall tile's floor, otherwise every room would have an extra row where the wall was.
+			// if the Length Quantity is one less than the total length of the room, this fills the edge with a widthWall.
+			// The + 1 is necessary to account for the wall tile's floor, otherwise every room would have an extra row.
 			if (lengthQuant + 1 == roomLength){
 				// Creates a Width Wall each time a row ends. Works the same as the floorTiles instiatiate.
-				if (doorway == false){
 					Instantiate (backWall, new Vector3(tileX, 0f, tileZ), Quaternion.identity);
-				}
-				else {
-					Instantiate (backWallLibrary[1], new Vector3(tileX, 0f, tileZ), Quaternion.identity);
-				}
 
+				// if an obstacle spawned, confirm in the debug log and reduce the amount of potential obstacles for the rest of the room.
+				if (backWallSelect == 4) {
+					Debug.Log ("Obstacle " + levelObstacles + " placed at " + tileZ + "x" + tileX + " along the back wall");
+					levelObstacles --;
+				}
+				
 				// detects if a doorway was placed when the widthWall was spawned.
 				if (backWallSelect == 0){
 					doorway = true;
 					doorLocation = tileZ;
 				}
+
 				// resets the quantity of tiles along the length to zero; without this, the code stops functioning after one column is complete
 				lengthQuant = 0;
 				//resets the X axis to the first horizontal row of the room; otherwise rooms would spawn on top of one another. EG. For the first room, this would be (0,y,z)
@@ -170,7 +215,30 @@ public class FloorGeneration : MonoBehaviour {
 					while (farWall +1 != roomLength){
 						// Determine the features on the LengthWall, either an obstacle (1/4th) or a blank floor (3/4ths)
 						Transform sideWall;
-						int sideWallSelect = Random.Range (0, 4);
+						int sideWallSelect;
+
+						// if this is the second to last space on the length wall and a door hasn't spawned yet, the corner piece is guaranteed to be a door.
+						// this line makes sure that door won't be blocked by an obstacle along the length wall.
+						if (farWall + 1 == roomLength && doorway == false) {
+							sideWallSelect = 0;
+						}
+
+						else {
+							// otherwise, select either an obstacle (1/5th) if there still are any available, or an empty wall (4/5ths)
+							if (levelObstacles > 0){
+								sideWallSelect = Random.Range (0, 5);
+							}
+							// if there are no obstacles remaining, spawn an empty wall.
+							else {
+								sideWallSelect = 0;
+							}
+						}
+
+						// if an obstacle spawned, confirm in the debug log and reduce the amount of potential obstacles for the rest of the room.
+						if (sideWallSelect == 4) {
+							Debug.Log ("Obstacle " + levelObstacles + " placed at " + tileZ + "x" + (tileX + farWall) + " along the side wall");
+							levelObstacles --;
+						}
 						
 						sideWall = sideWallLibrary[sideWallSelect];
 						// When the room is finished spawning everything else, fills in the walls of the far wall
