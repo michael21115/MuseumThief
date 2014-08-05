@@ -269,23 +269,23 @@ public class FloorGeneration : MonoBehaviour {
 					Debug.Log ("Finished spawning " + roomLength + "x" + roomWidth + " room (" + roomTotal + " spaces) Door Location: " + (doorLocation + 1));
 
 
-//					//After generating the room we populate it with guards and cameras
-//					//First we find the tiles that are empty to place spawn points on the empty tiles
-//					spawnPoints = GameObject.FindGameObjectsWithTag ("empty");
-//					
-//					//loop the enemy spawn until we reach the desired ammount of enemies
-//					for (int i = 0; i < amountOfEnemies; i++){
-//						
-//						//Find available spawn points and pick a random one
-//						int spawnPointAvailable = spawnPoints.Length;
-//						int spawn = Random.Range (0, spawnPointAvailable);
-//						
-//						// Select random enemy
-//						int enemySelect = Random.Range (0, 2);
-//						Object enemy = enemies[enemySelect];
-//						
-//						Instantiate (enemy, spawnPoints[spawn].transform.position, Quaternion.identity);
-//					}
+					//After generating the room we populate it with guards and cameras
+					//First we find the tiles that are empty to place spawn points on the empty tiles
+					spawnPoints = GameObject.FindGameObjectsWithTag ("empty");
+					
+					//loop the enemy spawn until we reach the desired ammount of enemies
+					for (int i = 0; i < amountOfEnemies; i++){
+						
+						//Find available spawn points and pick a random one
+						int spawnPointAvailable = spawnPoints.Length;
+						int spawn = Random.Range (0, spawnPointAvailable);
+						
+						// Select random enemy
+						int enemySelect = Random.Range (0, 2);
+						Object enemy = enemies[enemySelect];
+						
+						Instantiate (enemy, spawnPoints[spawn].transform.position, Quaternion.identity);
+					}
 
 				}
 			}
