@@ -281,7 +281,7 @@ public class FloorGeneration : MonoBehaviour {
 					
 					//After generating the room we populate it with guards and cameras
 					//First we find the tiles that are empty to place spawn points on the empty tiles
-					spawnPoints = GameObject.FindGameObjectsWithTag ("empty");
+					spawnPoints = GameObject.FindGameObjectsWithTag ("Empty");
 					
 					//loop the enemy spawn until we reach the desired ammount of enemies
 					for (int i = 0; i < amountOfEnemies; i++){
