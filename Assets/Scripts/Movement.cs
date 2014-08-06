@@ -115,7 +115,7 @@ public class Movement : MonoBehaviour {
 	}
 
 	// You will need a trigger-collider on this object
-	void OnTriggerEnter (Collider other ) {		
+	void OnCollisionEnter (Collision other ) {		
 		
 	
 
@@ -145,7 +145,7 @@ public class Movement : MonoBehaviour {
 
 	
 	//performs actions upon exiting trigger box
-	void OnTriggerExit()
+	void OnCollisionExit()
 	{
 
 
