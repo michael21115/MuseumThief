@@ -113,7 +113,7 @@ public class Movement : MonoBehaviour {
 		
 		
 	}
-
+	/*
 	// You will need a trigger-collider on this object
 	void OnCollisionEnter (Collision other ) {		
 		
@@ -132,14 +132,14 @@ public class Movement : MonoBehaviour {
 
 	void OnTriggerStay(Collider other2)
 	{
-		/*
+
 		if (other2.gameObject.tag == "Obstacle")
 		{
 			Debug.Log("hit trigger stay obstacle");
 			//canMove = false;
 			obstacleDir = direction;
 		}
-		*/
+
 
 	}
 
@@ -155,6 +155,8 @@ public class Movement : MonoBehaviour {
 
 
 	}
+	
+	*/
 
 
 
