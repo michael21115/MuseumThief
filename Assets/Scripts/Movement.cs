@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour {
 			else
 			{
 				GetComponent<CharacterController>().Move( new Vector3 (1, 0, 0));
-				Camera.main.transform.position += new Vector3 (.2f, 0f, 0f);
+				Camera.main.transform.position += new Vector3 (1f, 0f, 0f);
 
 			}
 			
@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour {
 			else
 			{
 				GetComponent<CharacterController>().Move( new Vector3 (-1, 0, 0) );
-				Camera.main.transform.position += new Vector3 (-.2f, 0f, 0f);
+				Camera.main.transform.position += new Vector3 (-1f, 0f, 0f);
 			}
 			
 		}
@@ -63,7 +63,7 @@ public class Movement : MonoBehaviour {
 			else
 			{
 				GetComponent<CharacterController>().Move( new Vector3 (0, 0, 1) );
-				Camera.main.transform.position += new Vector3 (0f, 0f, .2f);
+				Camera.main.transform.position += new Vector3 (0f, 0f, 1f);
 			}
 			
 			
@@ -83,7 +83,7 @@ public class Movement : MonoBehaviour {
 			else
 			{
 				GetComponent<CharacterController>().Move( new Vector3 (0, 0, -1) );
-				Camera.main.transform.position += new Vector3 (0f, 0f, -.2f);
+				Camera.main.transform.position += new Vector3 (0f, 0f, -1f);
 			}
 			
 			

@@ -6,7 +6,7 @@ public class FloorGeneration : MonoBehaviour {
 	
 	int roomCounter; // Determines which room the builder is working on
 	int roomQuantity = 1; // Determines how many rooms there are
-	int level = 0;
+	public static int level = 0;
 	
 	int roomLength; // Determines the length of each individual room
 	int roomWidth; // Determines the width of each individual room
@@ -21,13 +21,13 @@ public class FloorGeneration : MonoBehaviour {
 	public int widthMax = 9;
 	
 	public GameObject player;
-	Vector3 playerSpawn = new Vector3 (0f, 0.5f, 0f);
+	public static Vector3 playerSpawn = new Vector3 (0f, 0.5f, 0f);
 	
 	public Transform[] floorTileLibrary;
 	public Transform[] backWallLibrary;
 	public Transform[] sideWallLibrary; 
 	public Transform[] cornerLibrary; 
-	
+
 	float tileX = 0f; // X Location of the first tile placed. Increases each time a tile is placed
 	float tileZ = 0f; // Z Location of the first tile placed. Increases when each column is filled
 	int farWall = 1; // Checks the completion of the far wall (Length Wall) and completes it at the end of generating the room. Also accounts for the offset of each wall tile
@@ -35,8 +35,8 @@ public class FloorGeneration : MonoBehaviour {
 	int levelObstacles = 1; // declares how many obstacles should spawn on one floor, relative to the size of the room
 	
 	bool doorway = false; // Makes sure a doorway spawns for each room
-	bool keyPlaced = false;
-	float doorLocation;
+	public static bool keyPlaced = false;
+	public static float doorLocation;
 
 	public Transform BoundingBoxBack, BoundingBoxSide;
 	
@@ -270,7 +270,7 @@ public class FloorGeneration : MonoBehaviour {
 					Instantiate (player, playerSpawn, Quaternion.identity);
 					
 					newRoom = false; // Turns off room generation.
-					roomCounter ++; // moves the code on to the next room. If roomCounter is equal to roomQuantity, this ends the code. 
+					roomCounter ++; // If roomCounter is equal to roomQuantity, this ends the code. 
 					Debug.Log ("Finished spawning " + roomLength + "x" + roomWidth + " room (" + roomTotal + " spaces) Door Location: " + (doorLocation + 1));
 
 					// Sets the bounding boxes along the two walls in order to keep the player from flying off into empty space through the far walls.
@@ -288,16 +288,16 @@ public class FloorGeneration : MonoBehaviour {
 					obstacles = GameObject.FindGameObjectsWithTag ("Obstacle");
 					int spawnCheck = 0;
 
-//					//Remove spawnpoints that are next to obstacles
-//					while (spawnCheck < spawnPointsAvailable){
-//
-//						for (int i = 0; i < obstacles.Length; i ++) {
-//							if (Vector2.Distance (spawnPoints[spawnCheck].transform.position, obstacles[i].transform.position) < 2){
-//								//Remove Things from array/list
-//							}
-//						}
-//						spawnCheck ++;
-//					}
+					//Remove spawnpoints that are next to obstacles
+					while (spawnCheck < spawnPointsAvailable){
+
+						for (int i = 0; i < obstacles.Length; i ++) {
+							if (Vector2.Distance (spawnPoints[spawnCheck].transform.position, obstacles[i].transform.position) < 2){
+								//Remove Things from array/list
+							}
+						}
+						spawnCheck ++;
+					}
 					//print how many avaialble spawnpoints (Code Debug purpose)
 					Debug.Log ("Number of available spawn points is " + spawnPoints.Length);
 

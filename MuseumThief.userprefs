@@ -4,7 +4,11 @@
     <Files>
       <File FileName="Assets/Scripts/FloorGeneration.cs" Line="29" Column="36" />
       <File FileName="Assets/Scripts/DoorCode.cs" Line="14" Column="5" />
+<<<<<<< HEAD
       <File FileName="Assets/Scripts/ObtainedKey.cs" Line="9" Column="25" />
+=======
+      <File FileName="Assets/Scripts/ObtainedKey.cs" Line="11" Column="2" />
+>>>>>>> be9228a1a499085dc33e368cab9a1be1e477b517
       <File FileName="Assets/Scripts/Movement.cs" Line="27" Column="53" />
     </Files>
   </MonoDevelop.Ide.Workbench>
