@@ -1,8 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FloorGeneration.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ObtainedKey.cs">
     <Files>
-      <File FileName="Assets/Scripts/FloorGeneration.cs" Line="285" Column="43" />
+      <File FileName="Assets/Scripts/FloorGeneration.cs" Line="29" Column="36" />
+      <File FileName="Assets/Scripts/DoorCode.cs" Line="14" Column="5" />
+      <File FileName="Assets/Scripts/ObtainedKey.cs" Line="9" Column="25" />
+      <File FileName="Assets/Scripts/Movement.cs" Line="27" Column="53" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
