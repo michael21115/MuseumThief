@@ -6,7 +6,7 @@ public class FloorGeneration : MonoBehaviour {
 	
 	int roomCounter; // Determines which room the builder is working on
 	int roomQuantity = 1; // Determines how many rooms there are
-	int level = 0;
+	public static int level = 0;
 	
 	int roomLength; // Determines the length of each individual room
 	int roomWidth; // Determines the width of each individual room
@@ -21,13 +21,36 @@ public class FloorGeneration : MonoBehaviour {
 	public int widthMax = 9;
 	
 	public GameObject player;
-	Vector3 playerSpawn = new Vector3 (0f, 0.5f, 0f);
+	public static Vector3 playerSpawn = new Vector3 (0f, 0.5f, 0f);
 	
 	public Transform[] floorTileLibrary;
 	public Transform[] backWallLibrary;
 	public Transform[] sideWallLibrary; 
 	public Transform[] cornerLibrary; 
+
+	public List<Transform> allMyClones = new List<Transform>();
+
+	// while (allMyClones.Count < 100) {
+	// Transform newClone = Instantiate (prefab.RandominsideUnitySphere * 10, Random.rotation) as Transform; 
+	// To remember the clone, has to be CAST ("... as Transform") at the end of the line
+	// allMyClones.Add (newClone); // actually adds the clone to the list
+	// }
 	
+	// foreach (Transform clone in allMyClones) {
+	// foreach is a while loop with a counter attached to it used for iterating through a list, like doing X to everything in Y list
+	// clone.LookAt (Vector3.zero);
+	
+	// remove a clone if it is too close to 0,0,0
+	// for (int i=0; i< allMyClones.Count; i++) {
+	// if (allMyClones[i].position.magnitude < 5f) {
+	// Destroy (allMyClones[i].gameObject);
+	// allMyClones.Remove (allMyClones[i]); // remove from list, for a specific number use RemoveAt
+	
+	// if (allMyClones.Contains (transform ) )
+	// }
+	
+	// dotnetperls.com/list
+
 	float tileX = 0f; // X Location of the first tile placed. Increases each time a tile is placed
 	float tileZ = 0f; // Z Location of the first tile placed. Increases when each column is filled
 	int farWall = 1; // Checks the completion of the far wall (Length Wall) and completes it at the end of generating the room. Also accounts for the offset of each wall tile
@@ -35,8 +58,8 @@ public class FloorGeneration : MonoBehaviour {
 	int levelObstacles = 1; // declares how many obstacles should spawn on one floor, relative to the size of the room
 	
 	bool doorway = false; // Makes sure a doorway spawns for each room
-	bool keyPlaced = false;
-	float doorLocation;
+	public static bool keyPlaced = false;
+	public static float doorLocation;
 
 	public Transform BoundingBoxBack, BoundingBoxSide;
 	
@@ -269,7 +292,7 @@ public class FloorGeneration : MonoBehaviour {
 					Instantiate (player, playerSpawn, Quaternion.identity);
 					
 					newRoom = false; // Turns off room generation.
-					roomCounter ++; // moves the code on to the next room. If roomCounter is equal to roomQuantity, this ends the code. 
+					roomCounter ++; // If roomCounter is equal to roomQuantity, this ends the code. 
 					Debug.Log ("Finished spawning " + roomLength + "x" + roomWidth + " room (" + roomTotal + " spaces) Door Location: " + (doorLocation + 1));
 
 					// Sets the bounding boxes along the two walls in order to keep the player from flying off into empty space through the far walls.

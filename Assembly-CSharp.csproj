@@ -50,9 +50,11 @@
      <Compile Include="Assets\Scripts\CameraRotation\CameraRotation2.cs" />
      <Compile Include="Assets\Scripts\CameraRotation\CameraRotation3.cs" />
      <Compile Include="Assets\Scripts\CameraRotation\SmoothMove.cs" />
+     <Compile Include="Assets\Scripts\DoorCode.cs" />
      <Compile Include="Assets\Scripts\FloorGeneration.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
      <Compile Include="Assets\Scripts\MuseumGen.cs" />
+     <Compile Include="Assets\Scripts\ObtainedKey.cs" />
      <Compile Include="Assets\Scripts\Reset.cs" />
      <Compile Include="Assets\Scripts\guard.cs" />
   </ItemGroup>
