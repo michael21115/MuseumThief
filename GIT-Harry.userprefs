@@ -1,12 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SineWaveDemo.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LaserCollider.cs">
     <Files>
       <File FileName="Assets/Scripts/CameraRotation/SmoothMove.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CameraRotation/CameraRotation2.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CameraRotation/BallSwap.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CameraRotation/CameraRotation3.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SineWaveDemo.cs" Line="22" Column="1" />
+      <File FileName="Assets/Scripts/SineWaveDemo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CameraRotation4.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LaserLength.cs" Line="10" Column="2" />
+      <File FileName="../../Week 3-B/RAYCAST/Assets/RaycastDemo.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LaserCollider.cs" Line="14" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

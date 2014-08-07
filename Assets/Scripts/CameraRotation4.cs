@@ -15,7 +15,7 @@ public class CameraRotation4 : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		transform.localEulerAngles = new Vector3(45f + Mathf.Sin (Time.time) * 30f, 0f, 0f);
-	
+		transform.localEulerAngles = new Vector3(35f + Mathf.Sin (Time.time) * 45f, 0f, 0f);
+		
 	}
 }
