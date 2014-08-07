@@ -5,8 +5,7 @@ public class Movement : MonoBehaviour {
 	
 	//bring in variables
 	public int direction = 0;
-	public bool canMove = true;
-	public int obstacleDir = -1;
+
 	
 	void Update () {
 
@@ -24,15 +23,8 @@ public class Movement : MonoBehaviour {
 			//otherwise move forward
 			else
 			{
-				//if you can move forward than do it
-				if (obstacleDir != 0)
-				{
-
-
-					GetComponent<CharacterController>().Move( new Vector3 (1, 0, 0));
-				Camera.main.transform.position += new Vector3 (1, 0, 0);
-
-				}
+				GetComponent<CharacterController>().Move( new Vector3 (1, 0, 0));
+				Camera.main.transform.position += new Vector3 (.2f, 0f, 0f);
 
 			}
 			
@@ -51,14 +43,8 @@ public class Movement : MonoBehaviour {
 			//otherwise move back
 			else
 			{
-				//if you can move back than do it
-				if (obstacleDir != 1)
-				{
-					//GetComponent<CharacterController>().Move( transform.forward );
-					GetComponent<CharacterController>().Move( new Vector3 (-1, 0, 0) );
-				Camera.main.transform.position += new Vector3 (-1, 0, 0);
-				}
-
+				GetComponent<CharacterController>().Move( new Vector3 (-1, 0, 0) );
+				Camera.main.transform.position += new Vector3 (-.2f, 0f, 0f);
 			}
 			
 		}
@@ -76,13 +62,8 @@ public class Movement : MonoBehaviour {
 			//otherwise move left
 			else
 			{
-				//if you can move left than do it
-				if (obstacleDir != 2)
-				{
-					//GetComponent<CharacterController>().Move( transform.forward );
-					GetComponent<CharacterController>().Move( new Vector3 (0, 0, 1) );
-				Camera.main.transform.position += new Vector3 (0, 0, 1);
-				}
+				GetComponent<CharacterController>().Move( new Vector3 (0, 0, 1) );
+				Camera.main.transform.position += new Vector3 (0f, 0f, .2f);
 			}
 			
 			
@@ -101,14 +82,8 @@ public class Movement : MonoBehaviour {
 			//otherwise move right
 			else
 			{
-				//if you can move right than do it
-				if (obstacleDir != 3)
-				{
-					//GetComponent<CharacterController>().Move( transform.forward );
-					GetComponent<CharacterController>().Move( new Vector3 (0, 0, -1) );
-				Camera.main.transform.position += new Vector3 (0, 0, -1);
-				}
-
+				GetComponent<CharacterController>().Move( new Vector3 (0, 0, -1) );
+				Camera.main.transform.position += new Vector3 (0f, 0f, -.2f);
 			}
 			
 			
@@ -117,51 +92,6 @@ public class Movement : MonoBehaviour {
 		
 		
 	}
-	/*
-	// You will need a trigger-collider on this object
-	void OnCollisionEnter (Collision other ) {		
-		
-	
-
-		Debug.Log("entered trigger");
-		Debug.Log(other.gameObject.tag);
-		if (other.gameObject.tag == "Obstacle")
-		{
-			Debug.Log("hit obstacle");
-			//canMove = false;
-			obstacleDir = direction;
-		}
-		
-	}
-
-	void OnTriggerStay(Collider other2)
-	{
-
-		if (other2.gameObject.tag == "Obstacle")
-		{
-			Debug.Log("hit trigger stay obstacle");
-			//canMove = false;
-			obstacleDir = direction;
-		}
-
-
-	}
-
-	
-	//performs actions upon exiting trigger box
-	void OnCollisionExit()
-	{
-
-
-		//canMove = true;
-		obstacleDir = -1;
-		Debug.Log("exited trigger");
-
-
-	}
-	
-	*/
-
 
 
 
