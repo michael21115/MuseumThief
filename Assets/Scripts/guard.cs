@@ -7,19 +7,10 @@ public class guard : MonoBehaviour {
 	public int direction = 1;
 	public float move = 1f;
 
-	/*
-	void OnCollisionEnter(Collision other)
+	void OnCollisionEnter()
 	{
 		Debug.Log("collision detected");
-		if (other.gameObject.tag != "Player")
-		{
-			//move *= -1;
-			direction *= -1;
-			Debug.Log("changed the players direction");
-		}
-
-		
-	}*/
+	}
 	
 	void Update () {
 
@@ -43,9 +34,12 @@ public class guard : MonoBehaviour {
 
 			//move the guard
 			GetComponent<CharacterController>().Move (new Vector3 (0f, 0f, move) * Time.deltaTime);
-			//Debug.Log("moved the player");
-			//Debug.Log(transform.position);
-			
+			Debug.Log("moved the player");
+			Debug.Log(transform.position);
+//			Vector3 guardStartPosition = transform.position;
+//			transform.position = guardStartPosition + transform.right * move * Time.deltaTime;
+
+
 			//raycast to detect walls
 			Vector3 fwd = transform.TransformDirection(Vector3.forward);
 			if (Physics.Raycast(transform.position, fwd, 2))
@@ -70,7 +64,6 @@ public class guard : MonoBehaviour {
 				}
 
 			}
-
 	}
 
 

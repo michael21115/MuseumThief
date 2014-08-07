@@ -1,11 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FloorGeneration.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GuardMove.cs">
     <Files>
-      <File FileName="Assets\Scripts\FloorGeneration.cs" Line="287" Column="45" />
-      <File FileName="Assets\Scripts\MuseumGen.cs" Line="1" Column="1" />
-      <File FileName="..\..\Documents\GitHub\Summer Class Github\week04\Assets\scripts\ProcGenBasic.cs" Line="1" Column="1" />
-      <File FileName="..\Week 4\Assets\Scripts\procGenBasic.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\guard.cs" Line="40" Column="88" />
+      <File FileName="Assets\Scripts\GuardMove.cs" Line="20" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
