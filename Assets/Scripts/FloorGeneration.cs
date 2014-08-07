@@ -44,6 +44,7 @@ public class FloorGeneration : MonoBehaviour {
 	public GameObject[] enemies;
 	public int amountOfEnemies;
 	GameObject[] spawnPoints;
+	GameObject[] obstacles;
 
 
 	void Start () {
@@ -282,13 +283,29 @@ public class FloorGeneration : MonoBehaviour {
 					//After generating the room we populate it with guards and cameras
 					//First we find the tiles that are empty to place spawn points on the empty tiles
 					spawnPoints = GameObject.FindGameObjectsWithTag ("Empty");
-					
+					int spawnPointsAvailable = spawnPoints.Length;
+
+					obstacles = GameObject.FindGameObjectsWithTag ("Obstacle");
+					int spawnCheck = 0;
+
+					//Remove spawnpoints that are next to obstacles
+					while (spawnCheck < spawnPointsAvailable){
+
+						for (int i = 0; i < obstacles.Length; i ++) {
+							if (Vector2.Distance (spawnPoints[spawnCheck].transform.position, obstacles[i].transform.position) < 2){
+								//Remove Things from array/list
+							}
+						}
+						spawnCheck ++;
+					}
+					//print how many avaialble spawnpoints (Code Debug purpose)
+					Debug.Log ("Number of available spawn points is " + spawnPoints.Length);
+
 					//loop the enemy spawn until we reach the desired ammount of enemies
 					for (int i = 0; i < amountOfEnemies; i++){
 						
 						//Find available spawn points and pick a random one
-						int spawnPointAvailable = spawnPoints.Length;
-						int spawn = Random.Range (0, spawnPointAvailable);
+						int spawn = Random.Range (0, spawnPointsAvailable);
 						
 						// Select random enemy
 						int enemySelect = Random.Range (0, 2);
