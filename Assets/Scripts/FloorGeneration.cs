@@ -28,29 +28,6 @@ public class FloorGeneration : MonoBehaviour {
 	public Transform[] sideWallLibrary; 
 	public Transform[] cornerLibrary; 
 
-	public List<Transform> allMyClones = new List<Transform>();
-
-	// while (allMyClones.Count < 100) {
-	// Transform newClone = Instantiate (prefab.RandominsideUnitySphere * 10, Random.rotation) as Transform; 
-	// To remember the clone, has to be CAST ("... as Transform") at the end of the line
-	// allMyClones.Add (newClone); // actually adds the clone to the list
-	// }
-	
-	// foreach (Transform clone in allMyClones) {
-	// foreach is a while loop with a counter attached to it used for iterating through a list, like doing X to everything in Y list
-	// clone.LookAt (Vector3.zero);
-	
-	// remove a clone if it is too close to 0,0,0
-	// for (int i=0; i< allMyClones.Count; i++) {
-	// if (allMyClones[i].position.magnitude < 5f) {
-	// Destroy (allMyClones[i].gameObject);
-	// allMyClones.Remove (allMyClones[i]); // remove from list, for a specific number use RemoveAt
-	
-	// if (allMyClones.Contains (transform ) )
-	// }
-	
-	// dotnetperls.com/list
-
 	float tileX = 0f; // X Location of the first tile placed. Increases each time a tile is placed
 	float tileZ = 0f; // Z Location of the first tile placed. Increases when each column is filled
 	int farWall = 1; // Checks the completion of the far wall (Length Wall) and completes it at the end of generating the room. Also accounts for the offset of each wall tile
@@ -311,16 +288,16 @@ public class FloorGeneration : MonoBehaviour {
 					obstacles = GameObject.FindGameObjectsWithTag ("Obstacle");
 					int spawnCheck = 0;
 
-//					//Remove spawnpoints that are next to obstacles
-//					while (spawnCheck < spawnPointsAvailable){
-//
-//						for (int i = 0; i < obstacles.Length; i ++) {
-//							if (Vector2.Distance (spawnPoints[spawnCheck].transform.position, obstacles[i].transform.position) < 2){
-//								//Remove Things from array/list
-//							}
-//						}
-//						spawnCheck ++;
-//					}
+					//Remove spawnpoints that are next to obstacles
+					while (spawnCheck < spawnPointsAvailable){
+
+						for (int i = 0; i < obstacles.Length; i ++) {
+							if (Vector2.Distance (spawnPoints[spawnCheck].transform.position, obstacles[i].transform.position) < 2){
+								//Remove Things from array/list
+							}
+						}
+						spawnCheck ++;
+					}
 					//print how many avaialble spawnpoints (Code Debug purpose)
 					Debug.Log ("Number of available spawn points is " + spawnPoints.Length);
 
