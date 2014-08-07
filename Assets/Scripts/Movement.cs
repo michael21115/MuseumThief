@@ -28,7 +28,8 @@ public class Movement : MonoBehaviour {
 				if (obstacleDir != 0)
 				{
 
-				transform.position += new Vector3 (1, 0, 0);
+
+					GetComponent<CharacterController>().Move( new Vector3 (1, 0, 0));
 				Camera.main.transform.position += new Vector3 (1, 0, 0);
 
 				}
@@ -53,7 +54,8 @@ public class Movement : MonoBehaviour {
 				//if you can move back than do it
 				if (obstacleDir != 1)
 				{
-				transform.position += new Vector3 (-1, 0, 0);
+					//GetComponent<CharacterController>().Move( transform.forward );
+					GetComponent<CharacterController>().Move( new Vector3 (-1, 0, 0) );
 				Camera.main.transform.position += new Vector3 (-1, 0, 0);
 				}
 
@@ -77,7 +79,8 @@ public class Movement : MonoBehaviour {
 				//if you can move left than do it
 				if (obstacleDir != 2)
 				{
-				transform.position += new Vector3 (0, 0, 1);
+					//GetComponent<CharacterController>().Move( transform.forward );
+					GetComponent<CharacterController>().Move( new Vector3 (0, 0, 1) );
 				Camera.main.transform.position += new Vector3 (0, 0, 1);
 				}
 			}
@@ -101,7 +104,8 @@ public class Movement : MonoBehaviour {
 				//if you can move right than do it
 				if (obstacleDir != 3)
 				{
-				transform.position += new Vector3 (0, 0, -1);
+					//GetComponent<CharacterController>().Move( transform.forward );
+					GetComponent<CharacterController>().Move( new Vector3 (0, 0, -1) );
 				Camera.main.transform.position += new Vector3 (0, 0, -1);
 				}
 
