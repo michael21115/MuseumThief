@@ -288,16 +288,16 @@ public class FloorGeneration : MonoBehaviour {
 					obstacles = GameObject.FindGameObjectsWithTag ("Obstacle");
 					int spawnCheck = 0;
 
-					//Remove spawnpoints that are next to obstacles
-					while (spawnCheck < spawnPointsAvailable){
-
-						for (int i = 0; i < obstacles.Length; i ++) {
-							if (Vector2.Distance (spawnPoints[spawnCheck].transform.position, obstacles[i].transform.position) < 2){
-								//Remove Things from array/list
-							}
-						}
-						spawnCheck ++;
-					}
+//					//Remove spawnpoints that are next to obstacles
+//					while (spawnCheck < spawnPointsAvailable){
+//
+//						for (int i = 0; i < obstacles.Length; i ++) {
+//							if (Vector2.Distance (spawnPoints[spawnCheck].transform.position, obstacles[i].transform.position) < 2){
+//								//Remove Things from array/list
+//							}
+//						}
+//						spawnCheck ++;
+//					}
 					//print how many avaialble spawnpoints (Code Debug purpose)
 					Debug.Log ("Number of available spawn points is " + spawnPoints.Length);
 
@@ -310,10 +310,9 @@ public class FloorGeneration : MonoBehaviour {
 						// Select random enemy
 						int enemySelect = Random.Range (0, 2);
 						Object enemy = enemies[enemySelect];
-						
+
 						Instantiate (enemy, spawnPoints[spawn].transform.position, Quaternion.identity);
 					}
-					
 				}
 			}
 		}
