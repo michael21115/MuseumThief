@@ -43,9 +43,10 @@ public class FloorGeneration : MonoBehaviour {
 	// Enemy Spawning Variables
 	public GameObject[] enemies;
 	public int amountOfEnemies;
-	GameObject[] spawnPoints;
-	GameObject[] obstacles;
-
+	GameObject[] initialSpawnPoints;
+	GameObject[] initialObstacles;
+	public List<GameObject> spawnPoints = new List<GameObject>();
+	List<GameObject> obstacles = new List<GameObject>();
 
 	void Start () {
 		roomQuantity = 1;
@@ -282,24 +283,32 @@ public class FloorGeneration : MonoBehaviour {
 					
 					//After generating the room we populate it with guards and cameras
 					//First we find the tiles that are empty to place spawn points on the empty tiles
-					spawnPoints = GameObject.FindGameObjectsWithTag ("Empty");
-					int spawnPointsAvailable = spawnPoints.Length;
+					initialSpawnPoints = GameObject.FindGameObjectsWithTag ("Empty");
+					Debug.Log ("Number of available spawn points is " + initialSpawnPoints.Length);
 
-					obstacles = GameObject.FindGameObjectsWithTag ("Obstacle");
-					int spawnCheck = 0;
+					initialObstacles = GameObject.FindGameObjectsWithTag ("Obstacle");
+					obstacles.AddRange (initialObstacles);
+					int obstacleCount = obstacles.Count;
+					Debug.Log ("Number of Obstacles is: " + obstacleCount );
 
-					//Remove spawnpoints that are next to obstacles
-					while (spawnCheck < spawnPointsAvailable){
-
-						for (int i = 0; i < obstacles.Length; i ++) {
-							if (Vector2.Distance (spawnPoints[spawnCheck].transform.position, obstacles[i].transform.position) < 2){
-								//Remove Things from array/list
+					// check the empty tiles vs obstacles
+					//add the empty tiles that are not next to an obstacle to the spawn point list
+					for (int i = 0; i < initialSpawnPoints.Length; i++) {
+						float minimumDistance = 10;
+						for (int j = 0; j < initialObstacles.Length; j++){
+							float distance = Vector3.Distance (initialSpawnPoints[i].transform.position, initialObstacles[j].transform.position);
+							if (distance < minimumDistance){
+								minimumDistance = distance;
 							}
 						}
-						spawnCheck ++;
+						if (minimumDistance > 1f) {
+							spawnPoints.Add(initialSpawnPoints[i]);
+						}
 					}
-					//print how many avaialble spawnpoints (Code Debug purpose)
-					Debug.Log ("Number of available spawn points is " + spawnPoints.Length);
+
+					//Check new available spawn points
+					int spawnPointsAvailable = spawnPoints.Count;
+					Debug.Log ("New spawnpoints after obstacle check:" + spawnPointsAvailable);
 
 					//loop the enemy spawn until we reach the desired ammount of enemies
 					for (int i = 0; i < amountOfEnemies; i++){
@@ -310,6 +319,8 @@ public class FloorGeneration : MonoBehaviour {
 						// Select random enemy
 						int enemySelect = Random.Range (0, 2);
 						Object enemy = enemies[enemySelect];
+
+						//while (Vector3.Distance (spawnPoints[spawn].transform.position, obstacles.))
 
 						Instantiate (enemy, spawnPoints[spawn].transform.position, Quaternion.identity);
 					}
