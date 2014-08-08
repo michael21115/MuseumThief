@@ -18,7 +18,7 @@ public class GuardMove : MonoBehaviour {
 
 	void OnCollisionEnter (Collision collision) {
 		Debug.Log ("Direction Changed");
-		transform.rotation = Quaternion.Euler(0, 270, 0);
+		transform.Rotate (0, 180, 0);
 	}
 
 }

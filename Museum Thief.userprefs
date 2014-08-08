@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GuardMove.cs">
     <Files>
-      <File FileName="Assets\Scripts\guard.cs" Line="40" Column="88" />
-      <File FileName="Assets\Scripts\GuardMove.cs" Line="20" Column="35" />
+      <File FileName="Assets\Scripts\GuardMove.cs" Line="21" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
