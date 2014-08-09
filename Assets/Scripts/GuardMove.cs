@@ -13,12 +13,16 @@ public class GuardMove : MonoBehaviour {
 
 
 	void Update () {
+		//transform.position += transform.right * dirrection * Time.deltaTime;
 		transform.Translate (-1 * Time.deltaTime * dirrection, 0, 0);
 	}
 
 	void OnCollisionEnter (Collision collision) {
-		Debug.Log ("Direction Changed");
-		transform.Rotate (0, 180, 0);
+		Debug.Log ("Collision Detected");
+		if (collision.gameObject.tag == "Obstacle"){
+			Debug.Log ("Direction Changed");
+			transform.Rotate (0, 180, 0);
+		}
 	}
 
 }
