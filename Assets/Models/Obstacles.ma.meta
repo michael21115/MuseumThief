@@ -1,0 +1,87 @@
+fileFormatVersion: 2
+guid: 711adf1fb2282304da4bd1075d1faa86
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Column
+    100002: //RootNode
+    100004: Shelf_Glass
+    100006: Shelf_Stands
+    100008: Shelves
+    100010: Vase
+    400000: Column
+    400002: //RootNode
+    400004: Shelf_Glass
+    400006: Shelf_Stands
+    400008: Shelves
+    400010: Vase
+    2300000: Column
+    2300002: Shelf_Glass
+    2300004: Shelf_Stands
+    2300006: Shelves
+    2300008: Vase
+    3300000: Column
+    3300002: Shelf_Glass
+    3300004: Shelf_Stands
+    3300006: Shelves
+    3300008: Vase
+    4300000: Column
+    4300002: Vase
+    4300004: Shelves
+    4300006: Shelf_Stands
+    4300008: Shelf_Glass
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
