@@ -45,6 +45,7 @@ public class FloorGeneration : MonoBehaviour {
 	public int amountOfEnemies;
 	GameObject[] initialSpawnPoints;
 	GameObject[] initialObstacles;
+	GameObject[] backWalls;
 
 	public float minDistance = 1.2f;
 
@@ -320,12 +321,29 @@ public class FloorGeneration : MonoBehaviour {
 						int spawn = Random.Range (0, spawnPointsAvailable);
 						
 						// Select random enemy
-						int enemySelect = Random.Range (0, 1);
+						int enemySelect = 0;
 						Object enemy = enemies[enemySelect];
 
 						//while (Vector3.Distance (spawnPoints[spawn].transform.position, obstacles.))
 
 						Instantiate (enemy, spawnPoints[spawn].transform.position, Quaternion.identity);
+					}
+
+					backWalls = GameObject.FindGameObjectsWithTag ("Back Wall");
+					int backWallsAvailable = backWalls.Length;
+					//spawn Cameras on back walls
+					for (int i = 0; i < amountOfEnemies; i++){
+						
+						//Find available spawn points and pick a random one
+						int spawn = Random.Range (0, backWallsAvailable);
+						
+						// Select camera
+						int enemySelect = 1;
+						Object enemy = enemies[enemySelect];
+						
+						//while (Vector3.Distance (spawnPoints[spawn].transform.position, obstacles.))
+						
+						Instantiate (enemy, backWalls[spawn].transform.position, Quaternion.identity);
 					}
 				}
 			}
