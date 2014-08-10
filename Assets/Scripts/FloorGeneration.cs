@@ -45,6 +45,7 @@ public class FloorGeneration : MonoBehaviour {
 	public int amountOfEnemies;
 	GameObject[] initialSpawnPoints;
 	GameObject[] initialObstacles;
+
 	public List<GameObject> spawnPoints = new List<GameObject>();
 	List<GameObject> obstacles = new List<GameObject>();
 
