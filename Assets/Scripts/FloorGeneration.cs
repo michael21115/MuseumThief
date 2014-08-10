@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 public class FloorGeneration : MonoBehaviour {
 	
-	int roomCounter; // Determines which room the builder is working on
+	public static int roomCounter; // Determines which room the builder is working on
 	int roomQuantity = 1; // Determines how many rooms there are
-	public static int level = 0;
+	public static int level = 1;
 	
 	int roomLength; // Determines the length of each individual room
-	int roomWidth; // Determines the width of each individual room
+	public static int roomWidth; // Determines the width of each individual room
 	int roomTotal; // Determines the total amount of spaces in each individual room
 	int lengthQuant; // Separate variable from being roomLength dependant, so new rooms don't spawn on top of one another
 	int widthQuant; // same as lengthQuant, prevents new rooms from spawning on top of each other
@@ -21,7 +21,7 @@ public class FloorGeneration : MonoBehaviour {
 	public int widthMax = 9;
 	
 	public GameObject player;
-	public static Vector3 playerSpawn = new Vector3 (0f, 0.5f, 0f);
+	public static Vector3 playerSpawn = Vector3.zero;
 	
 	public Transform[] floorTileLibrary;
 	public Transform[] backWallLibrary;
@@ -64,12 +64,12 @@ public class FloorGeneration : MonoBehaviour {
 				tileZ = 0;
 				tileX = 0;
 				
-				roomLength = Random.Range (lengthMin, lengthMax) - (1 * level); // 1 * roomQuantity makes rooms more likely to be bigger as the player progresses.
-				roomWidth = Random.Range (widthMin, widthMax) - (1 * level);
+				roomLength = Random.Range ( (lengthMin + (1 * level) ), (lengthMax + (1 * level) ) ) - (1 * (level / 2)); // 1 * level / 2 makes rooms more likely to be smaller as the player progresses.
+				roomWidth = Random.Range ( (widthMin + (1 * level) ), (widthMax + (1 * level) ) ) - (1 * (level / 2));
 				roomTotal = roomLength * roomWidth;
-				levelObstacles = Mathf.RoundToInt(roomTotal / obstacleScale) + (1 * level); // scales the amount of obstacles in the room to the size of the room
+				levelObstacles = Mathf.RoundToInt(roomTotal / obstacleScale) + (1 * (level / 2)); // scales the amount of obstacles in the room to the size of the room
 				
-				Debug.Log ("Level " + roomQuantity + ": Generating " + roomLength + "x" + roomWidth + " Room (" + roomTotal + " spaces), max of " + levelObstacles + " floor obstacles");
+				Debug.Log ("Level " + level + ": Generating " + roomLength + "x" + roomWidth + " Room (" + roomTotal + " spaces), max of " + levelObstacles + " floor obstacles");
 			}
 			
 			// The following will be run through each time the while statement loops. This picks a new tile depending on what the spawner is generating.
