@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FloorGeneration.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Users\Francisco\Unity Proyects\Museum Thief\Assets\Scripts\CameraRotation\BallSwap.cs">
     <Files>
-      <File FileName="Assets\Scripts\FloorGeneration.cs" Line="304" Column="30" />
+      <File FileName="Assets\Scripts\FloorGeneration.cs" Line="305" Column="28" />
+      <File FileName="Assets\Scripts\GuardMove.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\Francisco\Unity Proyects\Museum Thief\Assets\Scripts\CameraRotation\BallSwap.cs" Line="1" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

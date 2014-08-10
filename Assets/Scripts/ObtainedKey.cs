@@ -5,8 +5,8 @@ public class ObtainedKey : MonoBehaviour {
 
 	public static bool KeyObtained = false; // affects DoorCode
 
-	public float height = .1f;
-	public float speed = 5f;
+	float height = .1f;
+	float speed = 5f;
 	
 	void Start () {
 		StartCoroutine (ItemBob());
@@ -20,7 +20,7 @@ public class ObtainedKey : MonoBehaviour {
 		}
 	}
 
-void OnTriggerEnter (Collider player){
+	void OnTriggerEnter (Collider player){
 		Destroy (gameObject);
 		KeyObtained = true;
 	}
