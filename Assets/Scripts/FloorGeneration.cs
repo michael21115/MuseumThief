@@ -314,12 +314,12 @@ public class FloorGeneration : MonoBehaviour {
 					}
 
 					//Check new available spawn points
-					int spawnPointsAvailable = spawnPoints.Count;
-					Debug.Log ("New spawnpoints after obstacle check:" + spawnPointsAvailable);
+					Debug.Log ("New spawnpoints after obstacle check:" + spawnPoints.Count);
 
 					//loop the enemy spawn until we reach the desired ammount of enemies
 					for (int i = 0; i < amountOfEnemies; i++){
-						
+
+						int spawnPointsAvailable = spawnPoints.Count;
 						//Find available spawn points and pick a random one
 						int spawn = Random.Range (0, spawnPointsAvailable);
 						
@@ -327,9 +327,14 @@ public class FloorGeneration : MonoBehaviour {
 						int enemySelect = 0;
 						Object enemy = enemies[enemySelect];
 
-						//while (Vector3.Distance (spawnPoints[spawn].transform.position, obstacles.))
-
-						Instantiate (enemy, spawnPoints[spawn].transform.position, Quaternion.identity);
+						//spawn enemies exept on first row
+						if (spawnPoints[spawn].transform.position.x != 0f) {
+							Instantiate (enemy, spawnPoints[spawn].transform.position, Quaternion.identity);
+						}
+						else{
+							i -= 1;
+						}
+						spawnPoints.Remove(spawnPoints[spawn]);
 					}
 
 					backWalls = GameObject.FindGameObjectsWithTag ("Back Wall");
@@ -343,9 +348,7 @@ public class FloorGeneration : MonoBehaviour {
 						// Select camera
 						int enemySelect = 1;
 						Object enemy = enemies[enemySelect];
-						
-						//while (Vector3.Distance (spawnPoints[spawn].transform.position, obstacles.))
-						
+
 						Instantiate (enemy, backWalls[spawn].transform.position, Quaternion.identity);
 					}
 				}
