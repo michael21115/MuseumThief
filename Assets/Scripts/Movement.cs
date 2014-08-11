@@ -5,11 +5,11 @@ public class Movement : MonoBehaviour {
 	
 	//bring in variables
 	public int direction = 0;
-	public bool moving = true;
-
+	public float curPos;
+	public float newPos;
 	
 	void Update () {
-
+		
 		// move forward
 		if ( Input.GetKeyDown (KeyCode.UpArrow) ) {
 			
@@ -24,12 +24,23 @@ public class Movement : MonoBehaviour {
 			//otherwise move forward
 			else
 			{
+				//set the current position
+				curPos = transform.position.x;
+				//Debug.Log(curPos);
 				GetComponent<CharacterController>().Move( new Vector3 (1, 0, 0));
-				if(moving)
+				//set the new position
+				newPos = transform.position.x;
+				//Debug.Log(newPos);
+				//check if the player moved then move the camera
+				if((newPos - curPos) >= .8f )
 				{
 					Camera.main.transform.position += new Vector3 (1f, 0f, 0f);
 				}
-
+				//if he didnt move reset his position
+				else{
+					transform.position = new Vector3(curPos, transform.position.y, transform.position.z);
+				}
+				
 			}
 			
 		}
@@ -47,14 +58,21 @@ public class Movement : MonoBehaviour {
 			//otherwise move back
 			else
 			{
+				curPos = transform.position.x;
+				//Debug.Log(curPos);
 				GetComponent<CharacterController>().Move( new Vector3 (-1, 0, 0) );
-				if(moving)
+				newPos = transform.position.x;
+				//Debug.Log(newPos);
+				if((newPos - curPos) <= -.8f)
 				{
 					Camera.main.transform.position += new Vector3 (-1f, 0f, 0f);
 				}
-
+				//if he didnt move reset his position
+				else{
+					transform.position = new Vector3(curPos, transform.position.y, transform.position.z);
+				}
 			}
-
+			
 		}
 		// strafe left
 		if (Input.GetKeyDown (KeyCode.LeftArrow) ) {
@@ -70,11 +88,16 @@ public class Movement : MonoBehaviour {
 			//otherwise move left
 			else
 			{
+				curPos = transform.position.z;
 				GetComponent<CharacterController>().Move( new Vector3 (0, 0, 1) );
-				if (moving){
+				newPos = transform.position.z;
+				if ((newPos - curPos) >= .8f){
 					Camera.main.transform.position += new Vector3 (0f, 0f, 1f);
 				}
-
+				//if he didnt move reset his position
+				else{
+					transform.position = new Vector3(transform.position.x, transform.position.y, curPos);
+				}
 			}
 			
 			
@@ -93,39 +116,22 @@ public class Movement : MonoBehaviour {
 			//otherwise move right
 			else
 			{
+				curPos = transform.position.z;
 				GetComponent<CharacterController>().Move( new Vector3 (0, 0, -1) );
-				if(moving)
+				newPos = transform.position.z;
+				if((newPos - curPos) <= -.8f)
 				{
-				Camera.main.transform.position += new Vector3 (0f, 0f, -1f);
+					Camera.main.transform.position += new Vector3 (0f, 0f, -1f);
 				}
-
+				//if he didnt move reset his position
+				else{
+					transform.position = new Vector3(transform.position.x, transform.position.y, curPos);
+				}
+				
 			}
 			
-			
 		}
 		
-		
-		
 	}
-
-	//set up collision to check if camera shouldn't move
-	void OnCollisionEnter (Collision col) {
-		//Debug.Log ("Collision Detected");
-		if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Wall"){
-			moving = false;
-			//Debug.Log ("obstacle Detected");
-		}
-
-	}
-	void OnCollisionExit (Collision col) {
-		//Debug.Log ("Collision Detected");
-		if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Wall"){
-			moving = true;
-			//Debug.Log ("obstacle exited");
-		}
-
-	}
-
-
-
+	
 }
