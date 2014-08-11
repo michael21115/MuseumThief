@@ -90,17 +90,17 @@ public class FloorGeneration : MonoBehaviour {
 			if (levelObstacles >= 0 && keyPlaced == false && tileX > 0){
 				// Makes it so only one keycard can spawn for a room within a certain range of tiles.
 				if (tileZ + 3 >= roomWidth && tileX + 2 < roomLength){
-					tileSelect = Random.Range (0, 5);
+					tileSelect = Random.Range (0, 13);
 				}
 				// Otherwise, spawn either a empty space (3/4ths) or an obstacle (1/4th). 
 				else {
 					// if tiles are spawning in the first half of the room, increase the likelihood of obstacles
 					if (tileX < roomLength / 2){
-						tileSelect = Random.Range (1, 4);
+						tileSelect = Random.Range (1, 13);
 					}
 					// if tiles are spawning in the back half of the room, decrease the likelihood of obstacles
 					else {
-						tileSelect = Random.Range (0, 4);
+						tileSelect = Random.Range (0, 13);
 					}
 				}
 			}
@@ -110,16 +110,16 @@ public class FloorGeneration : MonoBehaviour {
 				if (doorway == false){
 					// if spawning tiles in the first half of the room, make obstacles extremely likely to spawn
 					if (tileX < roomLength / 2){
-						tileSelect = Random.Range (2, 4);
+						tileSelect = Random.Range (2, 12);
 					}
 					// if spawning tiles in the back half of the room, make obstacles unlikely to spawn
 					else {
-						tileSelect = Random.Range (0, 4);
+						tileSelect = Random.Range (0, 12);
 					}
 				}
 				// if the doorway has been placed, decrease the likelihood of spawning obstacles.
 				else {
-					tileSelect = Random.Range (0, 4);
+					tileSelect = Random.Range (0, 11);
 				}
 			}
 			// if there is already a keycard and there are no more obstacles that can be placed, spawn only blank tiles.
@@ -128,13 +128,13 @@ public class FloorGeneration : MonoBehaviour {
 			}
 			
 			// if an obstacle spawned, confirm in the debug log and reduce the amount of potential obstacles for the rest of the room.
-			if (tileSelect == 3) {
+			if (tileSelect == 8 || tileSelect == 9 || tileSelect == 10 || tileSelect == 11) {
 				Debug.Log ("Obstacle " + levelObstacles + " placed at " + tileZ + "x" + tileX);
 				levelObstacles --;
 			}
 			
 			// if a key spawned, confirm in the debug log, and make it so no more keys can be placed.
-			if (tileSelect == 4){
+			if (tileSelect == 12){
 				Debug.Log ("Key Card placed at " + tileZ + "x" + tileX);
 				keyPlaced = true;
 			}
