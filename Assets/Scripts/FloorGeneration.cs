@@ -22,6 +22,8 @@ public class FloorGeneration : MonoBehaviour {
 	
 	public GameObject player;
 	public static Vector3 playerSpawn = Vector3.zero;
+	public GameObject resetButton;
+	Vector3 resetSpawn = new Vector3 (3.5f, -2.5f, -2.5f);
 	
 	public Transform[] floorTileLibrary;
 	public Transform[] backWallLibrary;
@@ -273,6 +275,7 @@ public class FloorGeneration : MonoBehaviour {
 					
 					// Places the player on the spawn point
 					Instantiate (player, playerSpawn, Quaternion.identity);
+					Instantiate (resetButton, resetSpawn, Quaternion.identity);
 					
 					newRoom = false; // Turns off room generation.
 					roomCounter ++; // If roomCounter is equal to roomQuantity, this ends the code. 

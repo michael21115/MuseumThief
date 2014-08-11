@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GuardMove : MonoBehaviour {
-	public float dirrection = 1f;
+	public float direction = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -14,13 +14,11 @@ public class GuardMove : MonoBehaviour {
 
 	void Update () {
 		//transform.position += transform.right * dirrection * Time.deltaTime;
-		transform.Translate (-1 * Time.deltaTime * dirrection, 0, 0);
+		transform.Translate (-1 * Time.deltaTime * direction, 0, 0);
 	}
 
 	void OnCollisionEnter (Collision collision) {
-		Debug.Log ("Collision Detected");
 		if (collision.gameObject.tag == "Obstacle"){
-			Debug.Log ("Direction Changed");
 			transform.Rotate (0, 180, 0);
 		}
 	}
