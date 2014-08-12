@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GuardMove : MonoBehaviour {
@@ -15,16 +15,6 @@ public class GuardMove : MonoBehaviour {
 	void Update () {
 		//transform.position += transform.right * dirrection * Time.deltaTime;
 		transform.Translate (-1 * Time.deltaTime * direction, 0, 0);
-
-		//Raycast to spot player
-		Vector3 fwd = transform.TransformDirection(Vector3.forward);
-		RaycastHit rayHit = new RaycastHit();
-
-		if (Physics.Raycast(transform.position, fwd, out rayHit, 10f)) {
-			if (rayHit.collider.tag == "Player") {
-				Debug.Log ("Found Player");
-			}
-		}
 	}
 
 	void OnCollisionEnter (Collision collision) {
