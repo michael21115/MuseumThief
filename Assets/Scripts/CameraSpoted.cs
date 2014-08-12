@@ -1,22 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpotlightCollison : MonoBehaviour {
+public class CameraSpoted : MonoBehaviour {
 
+	public float spotRange;
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//Raycast to spot player
-		Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
 		RaycastHit rayHit = new RaycastHit();
 		
-		if (Physics.Raycast(transform.position, fwd, out rayHit, Mathf.Infinity)) {
+		if (Physics.Raycast(transform.position, transform.forward, out rayHit, spotRange)) {
 			if (rayHit.collider.tag == "Player") {
-				Application.LoadLevel(2);
+				Application.LoadLevel(0);
 			}
 		}
 	}
