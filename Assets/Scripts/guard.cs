@@ -50,10 +50,10 @@ public class guard : MonoBehaviour {
 			Vector3 fwd = transform.TransformDirection(Vector3.forward);
 			if (Physics.Raycast(transform.position, fwd, 2))
 			{
-				print("There is something in front of the object!");	
+				//print("There is something in front of the object!");	
 				move *= -1;
 				direction *= -1;
-				Debug.Log(direction);
+				//Debug.Log(direction);
 			}
 
 			RaycastHit rayHit = new RaycastHit(); // empty, blank
@@ -65,7 +65,7 @@ public class guard : MonoBehaviour {
 				
 				if(rayHit.transform.gameObject.tag == "Player")
 				{	
-					print("hit player");
+					//print("hit player");
 					Destroy ( rayHit.transform.gameObject );
 				}
 
