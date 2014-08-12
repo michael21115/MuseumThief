@@ -16,7 +16,7 @@ public class SpotlightCollison : MonoBehaviour {
 		
 		if (Physics.Raycast(transform.position, fwd, out rayHit, Mathf.Infinity)) {
 			if (rayHit.collider.tag == "Player") {
-				Application.LoadLevel(0);
+				Application.LoadLevel(2);
 			}
 		}
 	}
