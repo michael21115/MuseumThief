@@ -3,9 +3,8 @@ using System.Collections;
 
 public class Reset : MonoBehaviour {
 
-	public GUIStyle CustomText;
-
 	void OnMouseDown(){ 
+		FloorGeneration.roomCounter = 0;
 		Application.LoadLevel(0);
 	}
 }
