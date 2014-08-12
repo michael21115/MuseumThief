@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{54AC46EA-25ED-DE2A-5D6E-34D6FB647D53}</ProjectGuid>
+	<ProjectGuid>{910B7756-3F68-C814-D8E1-92705FBBB37D}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<AssemblyName>Assembly-UnityScript-firstpass</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,24 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraPosition.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\BallSwap.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\CameraRotation2.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\CameraRotation3.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\SmoothMove.cs" />
-     <Compile Include="Assets\Scripts\DoorCode.cs" />
-     <Compile Include="Assets\Scripts\FloorGeneration.cs" />
-     <Compile Include="Assets\Scripts\GuardMove.cs" />
-     <Compile Include="Assets\Scripts\Movement.cs" />
-     <Compile Include="Assets\Scripts\MuseumGen.cs" />
-     <Compile Include="Assets\Scripts\ObtainedKey.cs" />
-     <Compile Include="Assets\Scripts\Reset.cs" />
-     <Compile Include="Assets\Scripts\guard.cs" />
+     <Compile Include="Assets\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{910B7756-3F68-C814-D8E1-92705FBBB37D}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
