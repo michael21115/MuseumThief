@@ -4,6 +4,6 @@ using System.Collections;
 public class startGame : MonoBehaviour {
 
 void OnMouseDown (){
-		Destroy (gameObject);
+		Application.LoadLevel(1);
 	}
 }

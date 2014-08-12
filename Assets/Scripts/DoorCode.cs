@@ -14,7 +14,7 @@ void OnTriggerEnter (Collider collider){
 				FloorGeneration.level++;
 				FloorGeneration.playerSpawn = new Vector3 (0f, 0f, FloorGeneration.doorLocation);
 				Camera.main.transform.position = (FloorGeneration.playerSpawn + new Vector3 (-0.625f, 2f, -1.12808f));
-				Application.LoadLevel(0);
+				Application.LoadLevel(1);
 
 			}
 			else {
@@ -28,7 +28,7 @@ void OnTriggerEnter (Collider collider){
 			playerLocation = new Vector3 (0f, 0f, Random.Range (0, FloorGeneration.roomWidth));
 			Camera.main.transform.position = playerLocation + cameraLocation;
 			FloorGeneration.playerSpawn = playerLocation;
-			Application.LoadLevel(0);
+			Application.LoadLevel(1);
 		}
 	}
 }
