@@ -21,7 +21,6 @@ public class GuardMove : MonoBehaviour {
 		RaycastHit rayHit = new RaycastHit();
 
 		if (Physics.Raycast(transform.position, fwd, out rayHit, 10f)) {
-			Debug.Log (rayHit.collider.tag);
 			if (rayHit.collider.tag == "Player") {
 				Debug.Log ("Found Player");
 			}

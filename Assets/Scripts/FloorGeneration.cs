@@ -89,7 +89,7 @@ public class FloorGeneration : MonoBehaviour {
 			// if there are no keycards in the room, try spawning a keycard. A keycard may not always spawn for a room.
 			if (levelObstacles >= 0 && keyPlaced == false && tileX > 0){
 				// Makes it so only one keycard can spawn for a room within a certain range of tiles.
-				if (tileZ + 3 >= roomWidth && tileX + 2 < roomLength){
+				if (tileZ + 5 > roomWidth && tileX + 5 < roomLength){
 					tileSelect = Random.Range (0, 13);
 				}
 				// Otherwise, spawn either a empty space (3/4ths) or an obstacle (1/4th). 
@@ -100,7 +100,7 @@ public class FloorGeneration : MonoBehaviour {
 					}
 					// if tiles are spawning in the back half of the room, decrease the likelihood of obstacles
 					else {
-						tileSelect = Random.Range (0, 13);
+						tileSelect = Random.Range (0, 12);
 					}
 				}
 			}
