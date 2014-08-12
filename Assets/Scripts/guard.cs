@@ -2,48 +2,29 @@
 using System.Collections;
 
 public class guard : MonoBehaviour {
-
-	//bring in variables
-	public int direction = 1;
-	public int move = 1;
+	public float dirrection = 1f;
+	
+	// Use this for initialization
+	void Start () {
+		transform.rotation = Quaternion.Euler(0, 90, 0);
+	}
+	
+	// Update is called once per frame
+	
 	
 	void Update () {
-
-
-
-			//if not facing left just change players direction
-			if (direction == 1)
-			{
-				transform.rotation = Quaternion.Euler(0, 270, 0);
-				
-				//set the direction to nothing, so this isn't called every frame
-				direction = 0;
-			}
-
-			if (direction == 2)
-			{
-				transform.rotation = Quaternion.Euler(0, 90, 0);
-			
-				//set the direction to nothing, so this isn't called every frame
-				direction = 0;
-			}
-
-
-			//move the guard
-			//transform.position += new Vector3 (0, 0, move);
-
-
-			
-
-		
-		
-		
+		//transform.position += transform.right * dirrection * Time.deltaTime;
+		transform.Translate (-1 * Time.deltaTime * dirrection, 0, 0);
 	}
-
-
-
-
-
+	
+	void OnCollisionEnter (Collision collision) {
+		Debug.Log ("Collision Detected");
+		if (collision.gameObject.tag == "Obstacle"){
+			Debug.Log ("Direction Changed");
+			transform.Rotate (0, 180, 0);
+		}
+	}
+	
 }
 
 

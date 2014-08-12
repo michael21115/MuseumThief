@@ -5,10 +5,10 @@ public class Movement : MonoBehaviour {
 	
 	//bring in variables
 	public int direction = 0;
+	public bool moving = true;
 
-	
 	void Update () {
-
+		
 		// move forward
 		if ( Input.GetKeyDown (KeyCode.UpArrow) ) {
 			
@@ -24,8 +24,10 @@ public class Movement : MonoBehaviour {
 			else
 			{
 				GetComponent<CharacterController>().Move( new Vector3 (1, 0, 0));
-				Camera.main.transform.position += new Vector3 (.2f, 0f, 0f);
-
+				if(moving)
+				{
+					Camera.main.transform.position += new Vector3 (1f, 0f, 0f);
+				}
 			}
 			
 		}
@@ -44,9 +46,12 @@ public class Movement : MonoBehaviour {
 			else
 			{
 				GetComponent<CharacterController>().Move( new Vector3 (-1, 0, 0) );
-				Camera.main.transform.position += new Vector3 (-.2f, 0f, 0f);
+				if(moving)
+				{
+					Camera.main.transform.position += new Vector3 (-1f, 0f, 0f);
+				}
 			}
-			
+
 		}
 		// strafe left
 		if (Input.GetKeyDown (KeyCode.LeftArrow) ) {
@@ -63,7 +68,9 @@ public class Movement : MonoBehaviour {
 			else
 			{
 				GetComponent<CharacterController>().Move( new Vector3 (0, 0, 1) );
-				Camera.main.transform.position += new Vector3 (0f, 0f, .2f);
+				if (moving){
+					Camera.main.transform.position += new Vector3 (0f, 0f, 1f);
+				}
 			}
 			
 			
@@ -83,16 +90,32 @@ public class Movement : MonoBehaviour {
 			else
 			{
 				GetComponent<CharacterController>().Move( new Vector3 (0, 0, -1) );
-				Camera.main.transform.position += new Vector3 (0f, 0f, -.2f);
+				if(moving)
+				{
+					Camera.main.transform.position += new Vector3 (0f, 0f, -1f);
+				}
+
+				Camera.main.transform.position += new Vector3 (0f, 0f, -1f);
+				}
+
 			}
 			
-			
 		}
-		
-		
-		
+
+	//set up collision to check if camera shouldn't move
+	void OnCollisionEnter (Collision col) {
+		//Debug.Log ("Collision Detected");
+		if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Wall"){
+			moving = false;
+			//Debug.Log ("obstacle Detected");
+		}
 	}
-
-
-
+	void OnCollisionExit (Collision col) {
+		//Debug.Log ("Collision Detected");
+		if (col.gameObject.tag == "Obstacle" || col.gameObject.tag == "Wall"){
+			moving = true;
+			//Debug.Log ("obstacle exited");
+		}
+	}
 }
+
