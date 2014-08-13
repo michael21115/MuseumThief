@@ -38,43 +38,6 @@ public class MuseumGen : MonoBehaviour {
 		roomQuantity = Random.Range (minRooms, maxRooms);
 		Debug.Log ("Generating Level with " + roomQuantity + " rooms");
 
-//		while (sideWallQuant < roomLength) {
-//
-//			//Establish Side wall parameters
-//			int sideWallIndex = Random.Range (0,2); // picks an index unmer for the sidewall tile set at random (must replace 2 as magic number with array size int)
-//			Transform sideWallToSpawn = sideWallLibrary[sideWallIndex];
-//					
-//			Instantiate (sideWallToSpawn, new Vector3 (tileX, 0, tileZ), Quaternion.identity);
-//			tileZ++;
-//			sideWallQuant++;
-//		}
-//
-//		tileZ = 0; //reset starting position
-//
-//		while (floorQuant < roomLength) {
-//
-//			if (floorQuant < roomLength - 1 ) {
-//				//Establish regular tiles
-//				int floorTileIndex = Random.Range (0,2); // substitute magic number 2 with array size 
-//				Transform floorToSpawn = floorTileLibrary[floorTileIndex];
-//
-//				Instantiate (floorToSpawn, new Vector3 (tileX + 1, 0, tileZ), Quaternion.identity);
-//				tileZ++;
-//				floorQuant++;
-//				}
-//
-//			else {
-//				//Establish Far Wall Library
-//				int backWallIndex = Random.Range (0,2); // must substitue magic number 2
-//				Transform backWalltoSpawn = backWallLibrary[backWallIndex];
-//
-//				Instantiate (backWalltoSpawn, new Vector3 (tileX + 1, 0, tileZ), Quaternion.identity);
-//				tileZ++;
-//				floorQuant++;
-//
-//			}
-//		}
-
 		while (roomCounter < roomQuantity) {
 			
 			if (newRoom == false){

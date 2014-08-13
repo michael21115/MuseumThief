@@ -1,12 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SpotlightCollison.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FloorGenerationV2.cs">
     <Files>
-      <File FileName="Assets\Scripts\SpotlightCollison.cs" Line="39" Column="1" />
-      <File FileName="Assets\Scripts\CameraRotation4.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GuardMove.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Reset.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FloorGenerationV2.cs" Line="6" Column="2" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FloorGenerationCopy.cs">
+    <Files>
       <File FileName="Assets\Scripts\FloorGeneration.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CameraSpoted.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Movement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MuseumGen.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FloorGenerationCopy.cs" Line="5" Column="33" />
+>>>>>>> ef2c51b875342461e574d5b3d2a0d65dd6b1959e
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
