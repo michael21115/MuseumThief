@@ -17,7 +17,7 @@ public class CameraSpoted : MonoBehaviour {
 		
 		if (Physics.Raycast(transform.position, transform.forward, out rayHit, spotRange)) {
 			if (rayHit.collider.tag == "Player") {
-				Application.LoadLevel(0);
+				Application.LoadLevel(2);
 			}
 		}
 	}
