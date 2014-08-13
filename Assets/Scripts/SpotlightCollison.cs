@@ -26,7 +26,7 @@ public class SpotlightCollison : MonoBehaviour {
 		}
 		
 		RaycastHit rayHit = new RaycastHit();
-		
+
 		Debug.DrawLine (transform.position, transform.position + fwd);
 		
 		if (Physics.Raycast(transform.position, fwd, out rayHit, spotRange)) {
