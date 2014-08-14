@@ -50,10 +50,10 @@ public class FloorGenerationV2 : MonoBehaviour {
 	public GameObject[] enemies;
 
 	int amountOfEnemies;
-	public int maximumGuards;
+	public int startingGuards;
 	public int minimumGuards;
 	public int minimumCameras;
-	public int maximumCameras;	
+	public int startingCameras;	
 
 	GameObject[] initialSpawnPoints;
 	GameObject[] initialObstacles;
@@ -85,7 +85,7 @@ public class FloorGenerationV2 : MonoBehaviour {
 				roomLength = Random.Range ( (lengthMin + (1 * level) ), (lengthMax + (1 * level) ) ) - (1 * level); // 1 * level / 2 makes rooms more likely to be smaller as the player progresses.
 				roomWidth = Random.Range ( (widthMin + (1 * level) ), (widthMax + (1 * level) ) ) - (1 * level);
 				roomTotal = roomLength * roomWidth;
-				levelObstacles = Mathf.RoundToInt(obstacleChance + (1 * level)); // scales the amount of obstacles in the room to the size of the room
+				levelObstacles = Mathf.RoundToInt(obstacleChance + (2 * level)); // scales the amount of obstacles in the room to the size of the room
 				
 				Debug.Log ("Level " + level + ": Generating " + roomLength + "x" + roomWidth + " Room (" + roomTotal + " spaces), max of " + levelObstacles + " floor obstacles");
 			}
@@ -349,7 +349,8 @@ public class FloorGenerationV2 : MonoBehaviour {
 					//Check new available spawn points
 					Debug.Log ("New spawnpoints after obstacle check:" + spawnPoints.Count);
 
-					amountOfEnemies = Random.Range(minimumGuards, maximumGuards + 1);
+					int maximumGuards = Mathf.RoundToInt(startingGuards + level/2);
+					amountOfEnemies = Random.Range(minimumGuards, maximumGuards);
 					//loop the enemy spawn until we reach the desired ammount of enemies
 					for (int i = 0; i < amountOfEnemies; i++){
 						
@@ -372,10 +373,10 @@ public class FloorGenerationV2 : MonoBehaviour {
 					}
 					
 					backWalls = GameObject.FindGameObjectsWithTag ("Back Wall");
-					int backWallsAvailable = backWalls.Length;
+					//int backWallsAvailable = backWalls.Length;
 					
 					emptyBackWalls.AddRange (backWalls);
-					int amountOfCameras = Random.Range (minimumCameras, maximumCameras + 1);
+					int amountOfCameras = Random.Range (minimumCameras, Mathf.RoundToInt(startingCameras + level/2));
 					//spawn Cameras on back walls
 					for (int i = 0; i < amountOfCameras; i++){
 						
@@ -397,7 +398,6 @@ public class FloorGenerationV2 : MonoBehaviour {
 							i = amountOfCameras;
 						}
 					}
-
 				}
 			}
 		}

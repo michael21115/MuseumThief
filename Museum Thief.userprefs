@@ -1,12 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObtainedKey.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FloorGenerationV2.cs">
     <Files>
-      <File FileName="Assets\Scripts\ObtainedKey.cs" Line="34" Column="24" />
-      <File FileName="Assets\Scripts\FloorGenerationV2.cs" Line="86" Column="9" />
+      <File FileName="Assets\Scripts\DoorCode.cs" Line="10" Column="83" />
+      <File FileName="Assets\Scripts\ObtainedKey.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FloorGenerationV2.cs" Line="9" Column="29" />
       <File FileName="Assets\Scripts\CameraRotation\CameraRotation4.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SpotlightCollison.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DoorCode.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DoorCode.cs" Line="10" Column="83" />
+      <File FileName="Assets\Shaders\Glass.shader" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
