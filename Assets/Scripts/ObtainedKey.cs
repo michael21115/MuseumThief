@@ -15,13 +15,23 @@ public class ObtainedKey : MonoBehaviour {
 	IEnumerator ItemBob () {
 		Vector3 cardStartPos = GetComponent<Transform>().position;
 		while (true) {
-			transform.position = cardStartPos + transform.right * Mathf.Sin (Time.time * speed) * height;
+			transform.position = cardStartPos + transform.forward * Mathf.Sin (Time.time * speed) * height;
 			yield return 0;
 		}
 	}
 
 	void OnTriggerEnter (Collider player){
-		Destroy (gameObject);
+		StartCoroutine (KeyGet ());
 		KeyObtained = true;
 	}
+
+	IEnumerator KeyGet () {
+		yield return 0;
+		audio.Play ();
+		yield return 0;
+		Debug.Log ("SOUND");
+		yield return 0;
+		Destroy (gameObject);
+	}
 }
+
