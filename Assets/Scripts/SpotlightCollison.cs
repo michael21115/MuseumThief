@@ -5,7 +5,7 @@ public class SpotlightCollison : MonoBehaviour {
 	
 	Vector3 fwd;
 	
-	public float degreeOffset = 0;
+	public float degreeOffset;
 	public float spotRange = 10;
 	
 	// Update is called once per frame
