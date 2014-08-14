@@ -46,13 +46,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraPosition.cs" />
      <Compile Include="Assets\Scripts\CameraRotation\BallSwap.cs" />
+     <Compile Include="Assets\Scripts\CameraRotation\CameraPosition.cs" />
      <Compile Include="Assets\Scripts\CameraRotation\CameraRotation2.cs" />
      <Compile Include="Assets\Scripts\CameraRotation\CameraRotation3.cs" />
+     <Compile Include="Assets\Scripts\CameraRotation\CameraRotation4.cs" />
+     <Compile Include="Assets\Scripts\CameraRotation\CameraSpoted.cs" />
+     <Compile Include="Assets\Scripts\CameraRotation\LaserCollider.cs" />
+     <Compile Include="Assets\Scripts\CameraRotation\LaserLength.cs" />
      <Compile Include="Assets\Scripts\CameraRotation\SmoothMove.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation4.cs" />
-     <Compile Include="Assets\Scripts\CameraSpoted.cs" />
      <Compile Include="Assets\Scripts\DoorCode.cs" />
      <Compile Include="Assets\Scripts\FloorGeneration.cs" />
      <Compile Include="Assets\Scripts\FloorGenerationCopy.cs" />
@@ -61,8 +63,6 @@
      <Compile Include="Assets\Scripts\GuardMove.cs" />
      <Compile Include="Assets\Scripts\Instructions.cs" />
      <Compile Include="Assets\Scripts\InstructionsButton.cs" />
-     <Compile Include="Assets\Scripts\LaserCollider.cs" />
-     <Compile Include="Assets\Scripts\LaserLength.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
      <Compile Include="Assets\Scripts\MuseumGen.cs" />
      <Compile Include="Assets\Scripts\ObtainedKey.cs" />
