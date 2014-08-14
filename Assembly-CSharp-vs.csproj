@@ -59,12 +59,15 @@
      <Compile Include="Assets\Scripts\FloorGenerationV2.cs" />
      <Compile Include="Assets\Scripts\GameOverRestart.cs" />
      <Compile Include="Assets\Scripts\GuardMove.cs" />
+     <Compile Include="Assets\Scripts\Instructions.cs" />
+     <Compile Include="Assets\Scripts\InstructionsButton.cs" />
+     <Compile Include="Assets\Scripts\LaserCollider.cs" />
+     <Compile Include="Assets\Scripts\LaserLength.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
      <Compile Include="Assets\Scripts\MuseumGen.cs" />
      <Compile Include="Assets\Scripts\ObtainedKey.cs" />
      <Compile Include="Assets\Scripts\Reset.cs" />
      <Compile Include="Assets\Scripts\SpotlightCollison.cs" />
-     <Compile Include="Assets\Scripts\guard.cs" />
      <Compile Include="Assets\Scripts\startGame.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Shaders\Glass.shader" />

@@ -21,8 +21,17 @@ public class ObtainedKey : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider player){
-		audio.Play ();
-		Destroy (gameObject);
+		StartCoroutine (KeyGet ());
 		KeyObtained = true;
 	}
+
+	IEnumerator KeyGet () {
+		yield return 0;
+		audio.Play ();
+		yield return 0;
+		Debug.Log ("SOUND");
+		yield return 0;
+		Destroy (gameObject);
+	}
 }
+

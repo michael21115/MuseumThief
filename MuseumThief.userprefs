@@ -1,10 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ObtainedKey.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Instructions.cs">
     <Files>
-      <File FileName="../GameDevelopment/Juiciness/Assets/Scripts/BallSwap.cs" Line="17" Column="3" />
-      <File FileName="Assets/Scripts/DoorCode.cs" Line="25" Column="3" />
-      <File FileName="Assets/Scripts/ObtainedKey.cs" Line="26" Column="22" />
+      <File FileName="../GameDevelopment/Juiciness/Assets/Scripts/BallSwap.cs" Line="50" Column="4" />
+      <File FileName="Assets/Scripts/DoorCode.cs" Line="15" Column="10" />
+      <File FileName="Assets/Scripts/ObtainedKey.cs" Line="31" Column="15" />
+      <File FileName="Assets/Scripts/InstructionsButton.cs" Line="7" Column="29" />
+      <File FileName="Assets/Scripts/Instructions.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
