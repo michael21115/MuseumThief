@@ -47,15 +47,19 @@ public class FloorGenerationV2 : MonoBehaviour {
 	
 	// Enemy Spawning Variables
 	public GameObject[] enemies;
-	public int amountOfEnemies;
+	public int maximumGuards;
+	public int minimumGuards;
+	public int minimumCameras;
+	public int maximumCameras;
 	GameObject[] initialSpawnPoints;
 	GameObject[] initialObstacles;
 	GameObject[] backWalls;
 	
 	public float minDistance = 1.2f;
 	
-	public List<GameObject> spawnPoints = new List<GameObject>();
+	List<GameObject> spawnPoints = new List<GameObject>();
 	List<GameObject> obstacles = new List<GameObject>();
+	List<GameObject> emptyBackWalls = new List<GameObject>();
 	
 	void Start () {
 		roomQuantity = 1;
@@ -343,7 +347,8 @@ public class FloorGenerationV2 : MonoBehaviour {
 					Debug.Log ("New spawnpoints after obstacle check:" + spawnPoints.Count);
 					
 					//loop the enemy spawn until we reach the desired ammount of enemies
-					for (int i = 0; i < amountOfEnemies; i++){
+					int amountOfGuards = Random.Range (minimumGuards, maximumGuards + 1);
+					for (int i = 0; i < amountOfGuards; i++){
 						
 						int spawnPointsAvailable = spawnPoints.Count;
 						//Find available spawn points and pick a random one
@@ -363,19 +368,32 @@ public class FloorGenerationV2 : MonoBehaviour {
 						spawnPoints.Remove(spawnPoints[spawn]);
 					}
 					
+
 					backWalls = GameObject.FindGameObjectsWithTag ("Back Wall");
 					int backWallsAvailable = backWalls.Length;
+
+					emptyBackWalls.AddRange (backWalls);
+					int amountOfCameras = Random.Range (minimumCameras, maximumCameras + 1);
 					//spawn Cameras on back walls
-					for (int i = 0; i < amountOfEnemies; i++){
+					for (int i = 0; i < amountOfCameras; i++){
 						
 						//Find available spawn points and pick a random one
-						int spawn = Random.Range (0, backWallsAvailable);
-						
+						int cameraSpawn = Random.Range (0, emptyBackWalls.Count);
+
 						// Select camera
 						int enemySelect = 1;
 						Object enemy = enemies[enemySelect];
-						
-						Instantiate (enemy, backWalls[spawn].transform.position, Quaternion.identity);
+
+						if (emptyBackWalls[cameraSpawn].transform.position.z != 0f){
+							Instantiate (enemy, emptyBackWalls[cameraSpawn].transform.position, Quaternion.identity);
+						}
+						else {
+							i -= 1;
+						}
+						emptyBackWalls.Remove(emptyBackWalls[cameraSpawn]);
+						if (emptyBackWalls.Count == 0){
+							i = amountOfCameras;
+						}
 					}
 				}
 			}
