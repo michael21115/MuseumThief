@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{FB504499-6E66-4FAF-E18B-E1B756449FD1}</ProjectGuid>
+	<ProjectGuid>{388E56D1-05A9-B530-1C3F-B73EAE9FDA61}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<AssemblyName>Assembly-UnityScript</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,30 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraRotation\BallSwap.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\CameraPosition.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\CameraRotation2.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\CameraRotation3.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\CameraRotation4.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\CameraSpoted.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\LaserCollider.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\LaserLength.cs" />
-     <Compile Include="Assets\Scripts\CameraRotation\SmoothMove.cs" />
-     <Compile Include="Assets\Scripts\DoorCode.cs" />
-     <Compile Include="Assets\Scripts\FloorGeneration.cs" />
-     <Compile Include="Assets\Scripts\FloorGenerationCopy.cs" />
-     <Compile Include="Assets\Scripts\FloorGenerationV2.cs" />
-     <Compile Include="Assets\Scripts\GameOverRestart.cs" />
-     <Compile Include="Assets\Scripts\GuardMove.cs" />
-     <Compile Include="Assets\Scripts\Instructions.cs" />
-     <Compile Include="Assets\Scripts\InstructionsButton.cs" />
-     <Compile Include="Assets\Scripts\LevelIndicator.cs" />
-     <Compile Include="Assets\Scripts\Movement.cs" />
-     <Compile Include="Assets\Scripts\MuseumGen.cs" />
-     <Compile Include="Assets\Scripts\ObtainedKey.cs" />
-     <Compile Include="Assets\Scripts\Reset.cs" />
-     <Compile Include="Assets\Scripts\SpotlightCollison.cs" />
-     <Compile Include="Assets\Scripts\startGame.cs" />
+     <Compile Include="Assets\win screen materials\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
      <None Include="Assets\win screen materials\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Shaders\Glass.shader" />
   </ItemGroup>

@@ -75,10 +75,10 @@ public class FloorGenerationV2 : MonoBehaviour {
 				tileZ = 0;
 				tileX = 0;
 				
-				roomLength = Random.Range ( (lengthMin + (1 * level) ), (lengthMax + (1 * level) ) ) - (1 * (level / 2)); // 1 * level / 2 makes rooms more likely to be smaller as the player progresses.
-				roomWidth = Random.Range ( (widthMin + (1 * level) ), (widthMax + (1 * level) ) ) - (1 * (level / 2));
+				roomLength = Random.Range ( (lengthMin + (1 * level) ), (lengthMax + (1 * level) ) ) - (1 * level); // 1 * level / 2 makes rooms more likely to be smaller as the player progresses.
+				roomWidth = Random.Range ( (widthMin + (1 * level) ), (widthMax + (1 * level) ) ) - (1 * level);
 				roomTotal = roomLength * roomWidth;
-				levelObstacles = Mathf.RoundToInt(obstacleChance + (1 * (level / 2))); // scales the amount of obstacles in the room to the size of the room
+				levelObstacles = Mathf.RoundToInt(obstacleChance + (1 * level)); // scales the amount of obstacles in the room to the size of the room
 				
 				Debug.Log ("Level " + level + ": Generating " + roomLength + "x" + roomWidth + " Room (" + roomTotal + " spaces), max of " + levelObstacles + " floor obstacles");
 			}
