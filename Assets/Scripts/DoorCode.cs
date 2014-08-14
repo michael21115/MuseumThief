@@ -4,7 +4,7 @@ using System.Collections;
 public class DoorCode : MonoBehaviour {
 
 void OnTriggerEnter (Collider collider){
-		if (FloorGeneration.keyPlaced == true) {
+		if (FloorGenerationV2.keyPlaced == true) {
 			if (ObtainedKey.KeyObtained == true){
 				if (FloorGenerationV2.level < FloorGenerationV2.maxLevel){
 					Debug.Log ("Door Entered, Key Used. Proceeding to Level " + FloorGeneration.level);
