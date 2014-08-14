@@ -7,6 +7,7 @@ public class FloorGenerationV2 : MonoBehaviour {
 	public static int roomCounter; // Determines which room the builder is working on
 	int roomQuantity = 1; // Determines how many rooms there are
 	public static int level = 1;
+	public static int maxLevel = 8;
 	
 	int roomLength; // Determines the length of each individual room
 	public static int roomWidth; // Determines the width of each individual room

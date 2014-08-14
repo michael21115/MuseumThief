@@ -4,7 +4,7 @@ using System.Collections;
 public class Reset : MonoBehaviour {
 
 	void OnMouseDown(){ 
-		FloorGeneration.roomCounter = 0;
+		FloorGenerationV2.roomCounter = 0;
 		Application.LoadLevel(1);
 	}
 }

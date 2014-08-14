@@ -7,8 +7,8 @@ void OnTriggerEnter (Collider collider){
 		if (FloorGeneration.keyPlaced == true) {
 			if (ObtainedKey.KeyObtained == true){
 				Debug.Log ("Door Entered, Key Used. Proceeding to Level " + FloorGeneration.level);
-				FloorGeneration.roomCounter = 0;
-				FloorGeneration.level++;
+				FloorGenerationV2.roomCounter = 0;
+				FloorGenerationV2.level++;
 				Application.LoadLevel(1);
 
 			}
@@ -18,8 +18,8 @@ void OnTriggerEnter (Collider collider){
 		}
 		else {
 			Debug.Log ("Door Entered, Proceeding to Level " + FloorGeneration.level);
-			FloorGeneration.roomCounter = 0;
-			FloorGeneration.level++;
+			FloorGenerationV2.roomCounter = 0;
+			FloorGenerationV2.level++;
 			Application.LoadLevel(1);
 		}
 	}

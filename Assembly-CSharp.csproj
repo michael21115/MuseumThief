@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\GuardMove.cs" />
      <Compile Include="Assets\Scripts\Instructions.cs" />
      <Compile Include="Assets\Scripts\InstructionsButton.cs" />
+     <Compile Include="Assets\Scripts\LevelIndicator.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
      <Compile Include="Assets\Scripts\MuseumGen.cs" />
      <Compile Include="Assets\Scripts\ObtainedKey.cs" />
