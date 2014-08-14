@@ -1,15 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DoorCode.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameOverRestart.cs">
     <Files>
-      <File FileName="../GameDevelopment/Juiciness/Assets/Scripts/BallSwap.cs" Line="50" Column="4" />
-      <File FileName="Assets/Scripts/DoorCode.cs" Line="22" Column="21" />
-      <File FileName="Assets/Scripts/FloorGenerationV2.cs" Line="10" Column="33" />
-      <File FileName="Assets/Scripts/ObtainedKey.cs" Line="31" Column="18" />
-      <File FileName="Assets/Scripts/Reset.cs" Line="7" Column="20" />
-      <File FileName="Assets/Scripts/startGame.cs" Line="7" Column="20" />
-      <File FileName="Assets/Scripts/LevelIndicator.cs" Line="7" Column="77" />
-      <File FileName="Assets/Scripts/Instructions.cs" Line="24" Column="1" />
+      <File FileName="Assets/Scripts/DoorCode.cs" Line="9" Column="34" />
+      <File FileName="Assets/Scripts/LevelIndicator.cs" Line="11" Column="50" />
+      <File FileName="Assets/Scripts/SpotlightCollison.cs" Line="9" Column="29" />
+      <File FileName="Assets/Scripts/GameOverRestart.cs" Line="7" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
