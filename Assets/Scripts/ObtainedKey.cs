@@ -5,8 +5,8 @@ public class ObtainedKey : MonoBehaviour {
 
 	public static bool KeyObtained = false; // affects DoorCode
 
-	float height = .1f;
-	float speed = 5f;
+	public float height = .1f;
+	public float speed = 5f;
 	
 	void Start () {
 		StartCoroutine (ItemBob());
