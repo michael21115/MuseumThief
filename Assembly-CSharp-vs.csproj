@@ -66,7 +66,7 @@
      <Compile Include="Assets\Scripts\guard.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>/Users/HB2/Dropbox/GAMES/FINAL PROJECT/GIT-Harry/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>/Users/mantis8132/Dropbox/GAMES/FINAL PROJECT/GIT-Harry/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
