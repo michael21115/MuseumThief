@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class FloorGenerationV2 : MonoBehaviour {
+public class solutionGen : MonoBehaviour {
 	
 	public static int roomCounter; // Determines which room the builder is working on
 	int roomQuantity = 1; // Determines how many rooms there are
@@ -23,16 +23,16 @@ public class FloorGenerationV2 : MonoBehaviour {
 	
 	public GameObject player;
 	public static Vector3 playerSpawn = Vector3.zero;
-
+	
 	//Tile instatiation variables
 	public Transform[] floorTileLibrary;
 	public Transform[] backWallLibrary;
 	public Transform[] sideWallLibrary; 
 	public Transform[] cornerLibrary; 
 	public Transform[] obstacleLibrary;
-
+	
 	public int obstacleChance = 20;
-	public int maxObstacles = 20;
+	public int chanceToAdvance = 5;
 	
 	float tileX = 0f; // X Location of the first tile placed. Increases each time a tile is placed
 	float tileZ = 0f; // Z Location of the first tile placed. Increases when each column is filled
@@ -48,13 +48,13 @@ public class FloorGenerationV2 : MonoBehaviour {
 	
 	// Enemy Spawning Variables
 	public GameObject[] enemies;
-
+	
 	int amountOfEnemies;
 	public int startingGuards;
 	public int minimumGuards;
 	public int minimumCameras;
 	public int startingCameras;	
-
+	
 	GameObject[] initialSpawnPoints;
 	GameObject[] initialObstacles;
 	GameObject[] backWalls;
@@ -65,13 +65,12 @@ public class FloorGenerationV2 : MonoBehaviour {
 	List<GameObject> obstacles = new List<GameObject>();
 	List<GameObject> emptyBackWalls = new List<GameObject>();
 	
+	// Use this for initialization
 	void Start () {
 		roomQuantity = 1;
-		
+						
 		// this activates if there are still rooms the code needs to generate
 		while (roomCounter < roomQuantity) {
-			
-			// to keep these variables from resetting each time the code loops, the newRoom variable makes sure it only happens once the previous room has completely spawned.
 			if (newRoom == false){
 				// Sets room generation on, resets construction variables, moves the room over so it isn't on top of the last room, then randomizes the room size
 				newRoom = true;
@@ -89,6 +88,8 @@ public class FloorGenerationV2 : MonoBehaviour {
 				
 				Debug.Log ("Level " + level + ": Generating " + roomLength + "x" + roomWidth + " Room (" + roomTotal + " spaces), max of " + levelObstacles + " floor obstacles");
 			}
+
+
 			
 			// The following will be run through each time the while statement loops. This picks a new tile depending on what the spawner is generating.
 			
@@ -96,10 +97,10 @@ public class FloorGenerationV2 : MonoBehaviour {
 			//Obstacles cap at levelObstacle limit, then defaults to a blank tile.
 			Transform floorTiles = floorTileLibrary[0];
 			int tileSelect;
-
+			
 			//Random Number to determine which tile library to chose from
 			int randomChance = Random.Range (0,101);
-
+			
 			//if lower less than or equal to the chance of an obstacle to spawn, pick a random obstacle from the obstacle library
 			if (randomChance <= levelObstacles){
 				tileSelect = Random.Range (0, obstacleLibrary.Length);
@@ -118,75 +119,42 @@ public class FloorGenerationV2 : MonoBehaviour {
 			else {
 				// Nothing should happen
 			}
-		
+			
 			// Determine the features on the WidthWall.
 			Transform backWall;
 			int backWallSelect;
 			
-			if (levelObstacles > 0){
-				if (doorway == false){
-					// if this is the second-to-last space on the far wall and a door hasn't spawned yet, makes sure this space is either a door or empty.
-					if (widthQuant + 1 == roomWidth){
-						backWallSelect = Random.Range (0, 2);
-					}
-					// if anywhere else along the back wall, spawn a door (1/5th), an obstacle (1/5th) or a blank wall (3/5ths). 
-					else {
-						backWallSelect = Random.Range (0, 5);
-					}
-				}
-				// if a door exists already, spawn an obstacle (1/4th) or a blank wall (3/4ths).
-				else {
-					backWallSelect = Random.Range (1, 5);
-				}
-			}
-			else {
-				backWallSelect = 1;
-			}
-			
+			backWallSelect = Random.Range (1, backWallLibrary.Length);
+
 			backWall = backWallLibrary[backWallSelect];
 			
 			
 			// Determine the features of the corner piece, either an obstacle or a blank floor
 			Transform cornerWall;
-			int cornerSelect = Random.Range (1, 3);
+			int cornerSelect = Random.Range (1, cornerLibrary.Length);
 			
 			cornerWall = cornerLibrary[cornerSelect];
 			
 			// LEVEL CREATION PROPER BEGINS HERE //
 			
-			if (tileX == 0){
-				
-				//make sure the first row of a room has no obstacles to garantee the entrance isn't blocked
-				Instantiate (floorTileLibrary[0], new Vector3 (tileX, 0f, tileZ), Quaternion.identity);
-				tileX++;
-				lengthQuant++;
-			}
-			
-			else {
-				// Instantiates a floor tile from the floorTileLibraryArray and places it.
-				Instantiate (floorTiles, new Vector3 (tileX, 0f, tileZ), Quaternion.identity);
-				// then advances the TileX position by one, so tiles aren't all spawning on (0,0,0) by rather (1,0,0), then (2,0,0), etc.
-				tileX++;
-				// then increases the length Quantity, so when this matches the length of the room the computer will realize that the column is filled and place a wall.
-				lengthQuant++;
-			}
+			// Instantiates a floor tile from the floorTileLibraryArray and places it.
+			Instantiate (floorTiles, new Vector3 (tileX, 0f, tileZ), Quaternion.identity);
+			// then advances the TileX position by one, so tiles aren't all spawning on (0,0,0) by rather (1,0,0), then (2,0,0), etc.
+			tileX++;
+			// then increases the length Quantity, so when this matches the length of the room the computer will realize that the column is filled and place a wall.
+			lengthQuant++;
+
 			
 			// if the Length Quantity is one less than the total length of the room, this fills the edge with a widthWall.
 			// The + 1 is necessary to account for the wall tile's floor, otherwise every room would have an extra row.
-			if (lengthQuant + 1 == roomLength){
+			if (lengthQuant == roomLength){
 				// Creates a Width Wall each time a row ends. Works the same as the floorTiles instiatiate.
 				Instantiate (backWall, new Vector3(tileX, 0f, tileZ), Quaternion.identity);
-				
+				 
 				// if an obstacle spawned, confirm in the debug log and reduce the amount of potential obstacles for the rest of the room.
-				if (backWallSelect == 4) {
+				if (backWallSelect == 3) {
 					Debug.Log ("Obstacle " + levelObstacles + " placed at " + tileZ + "x" + tileX + " along the back wall");
 					levelObstacles --;
-				}
-				
-				// detects if a doorway was placed when the widthWall was spawned.
-				if (backWallSelect == 0){
-					doorway = true;
-					doorLocation = tileZ;
 				}
 				
 				// resets the quantity of tiles along the length to zero; without this, the code stops functioning after one column is complete
@@ -199,33 +167,26 @@ public class FloorGenerationV2 : MonoBehaviour {
 				widthQuant++;
 				
 				// When the spawner has filled out the entire width of the room, begin spawning lengthWall pieces
-				if (widthQuant +1 == roomWidth){
+				if (widthQuant == roomWidth){
 					
 					// The farWall variable detects if the lengthWall is completely spawned or not. 
 					// If it is not completely spawned, this while statement will continue to try spawning more.
 					// It has to be offset by one so it does not spawn a wall where the corner piece should go.
 					
-					while (farWall +1 != roomLength){
+					while (farWall != roomLength){
 						// Determine the features on the LengthWall, either an obstacle (1/4th) or a blank floor (3/4ths)
 						Transform sideWall;
 						int sideWallSelect;
 						
-						// if this is the second to last space on the length wall and a door hasn't spawned yet, the corner piece is guaranteed to be a door.
-						// this line makes sure that door won't be blocked by an obstacle along the length wall.
-						if (farWall + 1 == roomLength && doorway == false) {
+						// otherwise, select either an obstacle (1/5th) if there still are any available, or an empty wall (4/5ths)
+						if (levelObstacles > 0){
+							sideWallSelect = Random.Range (0, 5);
+						}
+						// if there are no obstacles remaining, spawn an empty wall.
+						else {
 							sideWallSelect = 0;
 						}
-						
-						else {
-							// otherwise, select either an obstacle (1/5th) if there still are any available, or an empty wall (4/5ths)
-							if (levelObstacles > 0){
-								sideWallSelect = Random.Range (0, 5);
-							}
-							// if there are no obstacles remaining, spawn an empty wall.
-							else {
-								sideWallSelect = 0;
-							}
-						}
+
 						
 						// if an obstacle spawned, confirm in the debug log and reduce the amount of potential obstacles for the rest of the room.
 						if (sideWallSelect == 4) {
@@ -239,28 +200,112 @@ public class FloorGenerationV2 : MonoBehaviour {
 						farWall ++;
 						
 						// if there is only one more space left empty along the farWall, it must be the corner piece.
-						if (farWall +1 == roomLength){
-							if (doorway == false){
-								Instantiate (cornerLibrary[0], new Vector3((tileX + farWall), 0f, tileZ), Quaternion.identity);
-								doorway = true;
-								doorLocation = tileZ;
-							}
-							else {
-								Instantiate (cornerWall, new Vector3((tileX + farWall), 0f, tileZ), Quaternion.identity);
-							}
+						if (farWall == roomLength){
+							Instantiate (cornerWall, new Vector3((tileX + farWall), 0f, tileZ), Quaternion.identity);
 						}
 					}
-					
-					// Places the player on the spawn point
-					Instantiate (player, playerSpawn, Quaternion.identity);
-					
+
+
 					newRoom = false; // Turns off room generation.
 					roomCounter ++; // If roomCounter is equal to roomQuantity, this ends the code. 
 					Debug.Log ("Finished spawning " + roomLength + "x" + roomWidth + " room (" + roomTotal + " spaces) Door Location: " + (doorLocation + 1));
+
+					GameObject solutionMaker = new GameObject();
 					
+					//Produce a solution
+					while (solutionMaker.transform.position.x < roomLength){
+						
+						int chooseDirection = Random.Range(0,chanceToAdvance * 2);
+
+						//move forward
+						if (chooseDirection == chanceToAdvance - 1){
+							Collider[] oldTiles = Physics.OverlapSphere(solutionMaker.transform.position, 0.1f);
+							foreach (Collider tile in oldTiles){
+								if (tile.gameObject.tag != "Key"){
+									Destroy (tile.collider.gameObject);
+								}
+							}
+							Instantiate (floorTileLibrary[0], solutionMaker.transform.position, Quaternion.identity);
+							solutionMaker.transform.Translate (1,0,0);
+						}
+						//move to the right
+						else if (chooseDirection < chanceToAdvance - 1 && solutionMaker.transform.position.z > 0) {
+							Collider[] oldTiles = Physics.OverlapSphere(solutionMaker.transform.position, 0.11f);
+							foreach (Collider tile in oldTiles){
+								if (tile.gameObject.tag != "Key"){
+									Destroy (tile.collider.gameObject);
+								}
+							}
+							Instantiate (floorTileLibrary[0], solutionMaker.transform.position, Quaternion.identity);
+							solutionMaker.transform.Translate (0,0,-1);
+						}
+						//move to the left
+						else if (chooseDirection > chanceToAdvance - 1 && solutionMaker.transform.position.z < roomWidth - 1){
+							Collider[] oldTiles = Physics.OverlapSphere(solutionMaker.transform.position, 0.1f);
+							foreach (Collider tile in oldTiles){
+								if (tile.gameObject.tag != "Key"){
+									Destroy (tile.collider.gameObject);
+								}
+							}
+							Instantiate (floorTileLibrary[0], solutionMaker.transform.position, Quaternion.identity);
+							solutionMaker.transform.Translate (0,0,1);
+						}
+						//move forward along the wall
+						if (chooseDirection == chanceToAdvance - 1 && solutionMaker.transform.position.z == roomWidth){
+							Collider[] oldTiles = Physics.OverlapSphere(solutionMaker.transform.position, 0.1f);
+							foreach (Collider tile in oldTiles){
+								Destroy (tile.collider.gameObject);
+							}
+							int sideWallSelect = Random.Range (0, sideWallLibrary.Length);
+							Transform sideWall = sideWallLibrary[sideWallSelect];
+
+							Instantiate (sideWall, solutionMaker.transform.position, Quaternion.identity);
+							solutionMaker.transform.Translate (1,0,0);
+						}
+						//move to the left along the wall
+						else if (chooseDirection > chanceToAdvance - 1 && solutionMaker.transform.position.z == roomWidth){
+							Collider[] oldTiles = Physics.OverlapSphere(solutionMaker.transform.position, 0.1f);
+							foreach (Collider tile in oldTiles){
+								if (tile.tag != "Key"){
+									Destroy (tile.collider.gameObject);
+								}
+							}
+							int sideWallSelect = Random.Range (0, sideWallLibrary.Length);
+							Transform sideWall = sideWallLibrary[sideWallSelect];
+
+							Instantiate (sideWall, solutionMaker.transform.position, Quaternion.identity);
+							solutionMaker.transform.Translate (0,0,1);
+						}
+						else {
+							
+						}
+
+						//if the solution maker arrived at the back wall place a door 
+						if (solutionMaker.transform.position.x == roomLength){
+							Collider[] oldTiles = Physics.OverlapSphere(solutionMaker.transform.position, 0.11f);
+							foreach (Collider tile in oldTiles){
+								Destroy (tile.collider.gameObject);
+							}
+							Instantiate (backWallLibrary[0], solutionMaker.transform.position, Quaternion.identity);
+							doorway = true;
+						} 
+
+						//if the solution maker arrived at the corner, put a corner wall
+						if (solutionMaker.transform.position.x == roomLength && solutionMaker.transform.position.z == roomWidth){
+							Collider[] oldTiles = Physics.OverlapSphere(solutionMaker.transform.position, 0.11f);
+							foreach (Collider tile in oldTiles){
+								Destroy (tile.collider.gameObject);
+							}
+							Instantiate (cornerLibrary[0], solutionMaker.transform.position, Quaternion.identity);
+							doorway = true;
+						}
+					}
+
+					// Places the player on the spawn point
+					Instantiate (player, playerSpawn, Quaternion.identity);
+
 					// Sets the bounding boxes along the two walls in order to keep the player from flying off into empty space through the far walls.
 					// The east and south walls are kept static, as the room will always maintain the edges. 
-					
 					Instantiate (BoundingBoxBack, new Vector3 (roomLength + 0.5f, 0f, 5f), Quaternion.identity);
 					Instantiate (BoundingBoxSide, new Vector3 (5f, 0f, tileZ + 1.5f), Quaternion.identity );
 					
@@ -292,7 +337,7 @@ public class FloorGenerationV2 : MonoBehaviour {
 					
 					//Check new available spawn points
 					Debug.Log ("New spawnpoints after obstacle check:" + spawnPoints.Count);
-
+					
 					int maximumGuards = Mathf.RoundToInt(startingGuards + level/2);
 					amountOfEnemies = Random.Range(minimumGuards, maximumGuards);
 					//loop the enemy spawn until we reach the desired ammount of enemies
@@ -314,6 +359,9 @@ public class FloorGenerationV2 : MonoBehaviour {
 							i -= 1;
 						}
 						spawnPoints.Remove(spawnPoints[spawn]);
+						if (spawnPoints.Count == 0){
+							i = amountOfEnemies;
+						}
 					}
 					
 					backWalls = GameObject.FindGameObjectsWithTag ("Back Wall");
