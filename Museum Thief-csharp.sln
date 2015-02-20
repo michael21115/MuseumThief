@@ -23,7 +23,11 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+<<<<<<< .merge_file_a13228
 																																																																																						GlobalSection(MonoDevelopProperties) = preSolution
+=======
+																																																																								GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> .merge_file_a09836
 =======
 																	GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> ef2c51b875342461e574d5b3d2a0d65dd6b1959e

@@ -118,63 +118,7 @@ public class FloorGenerationV2 : MonoBehaviour {
 			else {
 				// Nothing should happen
 			}
-
-			//Previous code replaced commented out code below
-//			// if there are no keycards in the room, try spawning a keycard. A keycard may not always spawn for a room.
-//			if (levelObstacles >= 0 && keyPlaced == false && tileX > 0){
-//				// Makes it so only one keycard can spawn for a room within a certain range of tiles.
-//				if (tileZ + 5 > roomWidth && tileX + 5 < roomLength){
-//					tileSelect = Random.Range (0, 13);
-//				}
-//				// Otherwise, spawn either a empty space (3/4ths) or an obstacle (1/4th). 
-//				else {
-//					// if tiles are spawning in the first half of the room, increase the likelihood of obstacles
-//					if (tileX < roomLength / 2){
-//						tileSelect = Random.Range (1, 13);
-//					}
-//					// if tiles are spawning in the back half of the room, decrease the likelihood of obstacles
-//					else {
-//						tileSelect = Random.Range (0, 12);
-//					}
-//				}
-//			}
-//			// If there is already a keycard and there are still obstacles that can be placed, prioritize obstacle spawning. 
-//			else if (levelObstacles > 0 && keyPlaced == true && tileX > 0){
-//				// if the doorway hasnt been placed yet, increase the likelihood of spawning obstacles.
-//				if (doorway == false){
-//					// if spawning tiles in the first half of the room, make obstacles extremely likely to spawn
-//					if (tileX < roomLength / 2){
-//						tileSelect = Random.Range (2, 12);
-//					}
-//					// if spawning tiles in the back half of the room, make obstacles unlikely to spawn
-//					else {
-//						tileSelect = Random.Range (0, 12);
-//					}
-//				}
-//				// if the doorway has been placed, decrease the likelihood of spawning obstacles.
-//				else {
-//					tileSelect = Random.Range (0, 11);
-//				}
-//			}
-//			// if there is already a keycard and there are no more obstacles that can be placed, spawn only blank tiles.
-//			else {
-//				tileSelect = 1 ;
-//			}
-//			
-//			// if an obstacle spawned, confirm in the debug log and reduce the amount of potential obstacles for the rest of the room.
-//			if (tileSelect == 8 || tileSelect == 9 || tileSelect == 10 || tileSelect == 11) {
-//				Debug.Log ("Obstacle " + levelObstacles + " placed at " + tileZ + "x" + tileX);
-//				levelObstacles --;
-//			}
-//			
-//			// if a key spawned, confirm in the debug log, and make it so no more keys can be placed.
-//			if (tileSelect == 12){
-//				Debug.Log ("Key Card placed at " + tileZ + "x" + tileX);
-//				keyPlaced = true;
-//			}
-//			
-//			floorTiles = floorTileLibrary[tileSelect];
-			
+		
 			// Determine the features on the WidthWall.
 			Transform backWall;
 			int backWallSelect;
